@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?> 
 <!-- Copyright (C) 2012-13 MINHAP, Gobierno de España
    This program is licensed and may be used, modified and redistributed under the terms
    of the European Public License (EUPL), either version 1.1 or (at your
@@ -10,7 +10,7 @@
    more details.
    You should have received a copy of the EUPL1.1 license
    along with this program; if not, you may find it at
-   http://joinup.ec.europa.eu/software/page/eupl/licence-eupl -->
+   http://joinup.ec.europa.eu/software/page/eupl/licence-eupl --> 
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:sec="http://www.springframework.org/schema/security" xmlns:jaxws="http://cxf.apache.org/jaxws" xmlns:context="http://www.springframework.org/schema/context" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
 						http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
                         http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.0.xsd
@@ -27,10 +27,10 @@
         <property name="locations"> 
             <list> 
                 <value>
-                    file:${csvstorage.config.path}/csvstorage.properties
+                     file:${csvstorage.config.path}/csvstorage.properties 
                 </value> 
                 <value>
-                    file:${csvstorage.config.path}/repository.properties
+                     file:${csvstorage.config.path}/repository.properties 
                 </value> 
             </list> 
         </property> 
@@ -85,25 +85,25 @@
     </bean> 
     <util:properties id="cryptoProperties"> 
         <prop key="schema-validation-enabled">
-            ${schema-validation-enabled}
+             ${schema-validation-enabled} 
         </prop> 
         <prop key="ws-security.enable.nonce.cache">
-            ${ws-security.enable.nonce.cache}
+             ${ws-security.enable.nonce.cache} 
         </prop> 
         <prop key="ws-security.enable.timestamp.cache">
-            ${ws-security.enable.timestamp.cache}
+             ${ws-security.enable.timestamp.cache} 
         </prop> 
         <prop key="org.apache.wss4j.crypto.provider">
-            ${org.apache.wss4j.crypto.provider}
+             ${org.apache.wss4j.crypto.provider} 
         </prop> 
         <prop key="org.apache.wss4j.crypto.merlin.truststore.file">
-            ${org.apache.wss4j.crypto.merlin.truststore.file}
+             ${org.apache.wss4j.crypto.merlin.truststore.file} 
         </prop> 
         <prop key="org.apache.wss4j.crypto.merlin.truststore.password">
-            ${org.apache.wss4j.crypto.merlin.truststore.password}
+             ${org.apache.wss4j.crypto.merlin.truststore.password} 
         </prop> 
         <prop key="org.apache.wss4j.crypto.merlin.truststore.type">
-            ${org.apache.wss4j.crypto.merlin.truststore.type}
+             ${org.apache.wss4j.crypto.merlin.truststore.type} 
         </prop> 
     </util:properties> 
     <bean id="wSS4JCertificateInInterceptor" class="es.gob.aapp.csvstorage.webservices.security.interceptor.CustomWSS4JInInterceptor"> 
