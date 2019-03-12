@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata modelVersion="1.1.0">
+  <groupId>es.gob.aapp</groupId>
+  <artifactId>csvstorage</artifactId>
+  <version>1.2.3-CARM.1-SNAPSHOT</version>
+  <versioning>
+    <snapshot>
+      <localCopy>true</localCopy>
+    </snapshot>
+    <lastUpdated>20190301174128</lastUpdated>
+    <snapshotVersions>
+      <snapshotVersion>
+        <extension>war</extension>
+        <value>1.2.3-CARM.1-SNAPSHOT</value>
+        <updated>20190301174128</updated>
+      </snapshotVersion>
+      <snapshotVersion>
+        <extension>pom</extension>
+        <value>1.2.3-CARM.1-SNAPSHOT</value>
+        <updated>20190301174128</updated>
+      </snapshotVersion>
+    </snapshotVersions>
+  </versioning>
+</metadata>
