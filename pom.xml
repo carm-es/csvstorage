@@ -6,7 +6,9 @@
   <version>1.2.3-CARM.1-SNAPSHOT</version>
   <packaging>pom</packaging>
 
-  <name>Pom para la CARM</name>
+  <name>CSV Storage</name>
+  <description>Instalación y desarrollo evolutivo en la CARM, de la versión distribuible de CSV Storage del CTT: https://administracionelectronica.gob.es/ctt/inside</description>
+
   <scm>
     <connection>scm:git:https://github.com/carm-es/csvstorage.git</connection>
     <developerConnection>scm:git:[push=]https://github.com/carm-es/csvstorage.git[fetch=]https://github.com/carm-es/csvstorage.git</developerConnection>

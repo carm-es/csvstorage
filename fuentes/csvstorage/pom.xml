@@ -10,7 +10,7 @@
     <relativePath>../..</relativePath>
   </parent>
 
-  <name>CsvStorage WAR</name>
+  <name>Aplicación WAR</name>
   <packaging>war</packaging>
 
 
