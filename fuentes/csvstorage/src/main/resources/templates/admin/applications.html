@@ -1,0 +1,272 @@
+<script th:src="|${#httpServletRequest.getContextPath()}/public/js/admin/applicationsdatatable.js|"></script>
+
+<div id="edit-applications" class="fld">
+
+	<form id="form_save_application" th:fragment="edit-applications" th:object="${aplicacion}">
+
+		<input type="hidden" id="id" th:field="*{id}" />
+
+		<fieldset>
+			<legend>
+				<span th:text="#{admin.application.new.title}"></span>
+			</legend>
+			<div class="fld">
+				<label th:for="${#ids.next('idAplicacionPublico')}"
+					   th:text="#{admin.application.data.idPublico}"></label>
+				<input type="text" id="idAplicacionPublico" th:field="*{idAplicacionPublico}"
+					   th:errorclass="'error'" />
+				&nbsp;<span style='color:red'>(*)</span>
+				<label class="error"
+					   th:if="${#fields.hasErrors('idAplicacionPublico')}"
+					   th:errors="*{idAplicacionPublico}"></label>
+			</div>
+			<div class="fld">
+				<label th:for="${#ids.next('idAplicacion')}"
+					th:text="#{admin.application.data.id}"></label>
+				<input type="text"
+					id="idAplicacion" th:field="*{idAplicacion}"
+					th:errorclass="'error'" />
+				&nbsp;<span style='color:red'>(*)</span>	
+				<label class="error"
+					th:if="${#fields.hasErrors('idAplicacion')}"
+					th:errors="*{idAplicacion}"></label>
+			</div>
+			<div class="fld">
+				<label th:for="${#ids.next('descripcion')}"
+					th:text="#{admin.application.data.description}"></label> 
+				<input type="text" id="descripcion" th:field="*{descripcion}"
+					th:errorclass="'error'" />
+				&nbsp;<span style='color:red'>(*)</span>
+				<label class="error"
+					th:if="${#fields.hasErrors('descripcion')}"
+					th:errors="*{descripcion}"></label>
+			</div>
+			<div class="fld">
+				<label th:for="${#ids.next('password')}"
+					th:text="#{admin.application.data.password}"></label>
+				<input type="text" id="password" th:field="*{password}"
+					th:errorclass="'error'" />
+				&nbsp;<span style='color:red'>(*)</span>
+				<label class="error"
+					th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></label>
+				<a th:href="|javascript:showInfoApplication('#{admin.application.data.password.nota}');|" 
+					   th:title="Info" 
+					   th:id="|btn_info_password|"
+					   class="btn-table-action btn__no-text">
+						<span class="mf-icon mf-icon-info"></span>
+				</a> 	
+					
+			</div>
+
+			<div class="fld">
+				<label th:for="${#ids.next('unidadApplication')}" th:text="#{admin.application.data.organismo}"></label>
+				<input type="hidden" id="nombreUnidad" th:field="*{unidad.nombre}" />
+				<input type="text" id="unidadApplication" th:field="*{unidad.unidadOrganica}" th:errorclass="'error'" tabindex="1" />
+				&nbsp;<span style='color:red'>(*)</span>
+				<label class="error" th:if="${#fields.hasErrors('unidad.unidadOrganica')}" th:errors="*{unidad.unidadOrganica}"></label>
+			</div>
+
+
+
+			<div class="fld">
+				<label th:for="${#ids.next('numSerie')}" th:text="#{admin.application.data.certificado.numSerie}"></label>
+				<input type="text" id="serialNumberCertificado" th:field="*{serialNumberCertificado}" th:errorclass="'error'" readonly="true" />
+				<a onclick="seleccionarCertificado();" class="simbutton primary"
+					th:title="#{admin.application.data.certificado.select}"
+					th:text="#{admin.application.data.certificado.select}"></a>
+				<a th:href="|javascript:cleanSerialNumber();|" 
+					   th:title="#{admin.application.data.certificado.numSerie}" 
+					   th:id="|btn_delete_numSerie|"
+					   class="btn-table-action btn__no-text">
+						<span class="mf-icon mf-icon-delete"></span>
+					</a> 		
+				<label class="error" th:if="${#fields.hasErrors('serialNumberCertificado')}" th:errors="*{serialNumberCertificado}"></label>
+				
+			</div>
+
+			<div class="fld">
+				<label th:for="${#ids.next('admin')}" th:text="#{admin.application.data.isAdmin}"></label>
+				<input type="checkbox" th:field="*{admin}" th:value="${admin}" />
+			</div>
+			
+			<div class="fld">
+				<label th:for="${#ids.next('activo')}" th:text="#{admin.application.data.activo}"></label>
+				<input type="checkbox" th:field="*{activo}" th:value="${activo}" />
+			</div>
+			
+			<div class="fld">
+				<label th:for="${#ids.next('validarDocumentoENI')}" th:text="#{admin.application.data.validarDocumentoENI}"></label>
+				<input type="checkbox" th:field="*{validarDocumentoENI}" th:value="${validarDocumentoENI}" /> 
+			</div>
+			
+			<div class="fld">
+				<label th:for="${#ids.next('nombreResponsable')}"
+					th:text="#{admin.application.data.responsable}"></label>
+				<input type="text" id="nombreResponsable" th:field="*{nombreResponsable}"
+					th:errorclass="'error'" />
+				&nbsp;<span style='color:red'>(*)</span>	
+				<label class="error"
+					th:if="${#fields.hasErrors('nombreResponsable')}"
+					th:errors="*{nombreResponsable}"></label>
+			</div>
+			
+			<div class="fld">
+				<label th:for="${#ids.next('emailResponsable')}"
+					th:text="#{admin.application.data.email}"></label>
+				<input type="text" id="emailResponsable" th:field="*{emailResponsable}"
+					th:errorclass="'error'" />
+				&nbsp;<span style='color:red'>(*)</span>
+				<label class="error"
+					th:if="${#fields.hasErrors('emailResponsable')}"
+					th:errors="*{emailResponsable}"></label>
+			</div>
+			
+			<div class="fld">
+				<label th:for="${#ids.next('telefonoResponsable')}"
+					th:text="#{admin.application.data.telefono}"></label> <input
+					type="text" id="telefonoResponsable" th:field="*{telefonoResponsable}"
+					th:errorclass="'error'" /> 
+			</div>
+			
+			<div class="fld">
+				<label th:for="${#ids.next('permisoLectura')}" th:text="#{admin.application.data.permisoLectura}"></label>
+				<select th:field="*{permisoLectura}" th:remove="all-but-first" style="width:320px" disabled="true">
+					<option th:each="permission : ${loadPermissions}" 
+                        th:value="${permission.code}" th:text="${permission.desc}"/>
+				</select>
+				<label class="error" th:if="${#fields.hasErrors('permisoLectura')}" th:errors="*{permisoLectura}"></label>		
+			</div>
+			
+			<div class="fld">
+				<label th:text="#{admin.application.data.documentosPdfYEni}"></label>
+				<input id="documentosPdfYEni" type="checkbox" th:field="*{documentosPdfYEni}" th:value="${documentosPdfYEni}" checked="checked" disabled="true"/>
+			</div>	
+			
+			<div class="fld">
+				<label th:text="#{admin.application.cmis.servicios}"></label>
+				<input type="checkbox" th:field="*{lecturaCmis}" th:value="${lecturaCmis}" onclick="habilitarEscrituraCmis()" />
+				<label th:for="${#ids.next('lecturaCmis')}" th:text="#{admin.application.cmis.lectura}"></label>
+				<input type="checkbox" th:field="*{escrituraCmis}" th:value="${escrituraCmis}" disabled="disabled" />
+				<label th:for="${#ids.next('escrituraCmis')}" th:text="#{admin.application.cmis.escritura}"></label>
+			</div>
+			
+		</fieldset>
+
+		<fieldset class="fsubmit"></fieldset>
+
+		<a onclick="saveAplicacion();" class="simbutton primary"
+				th:title="#{admin.application.data.save}"
+				th:text="#{admin.application.data.save}"></a>
+		<a onclick="limpiarCamposAplicacion();" class="simbutton primary"
+			th:title="#{admin.application.data.clear}" th:text="#{admin.application.data.clear}"></a>			
+
+	</form>
+
+</div>
+
+
+<div class="fld" id="listaplicaciones">
+	<table id="applicationList"
+		class="mf-table-data mf-table-data__sortable mf-table-data__zebra" th:fragment="listaplicaciones">
+		<thead>
+			<tr>
+				<th><a href="#!" class="mf-sort-ln"
+					   th:text="#{admin.list.application.col.idPublico}"></a></th>
+
+				<th><a href="#!" class="mf-sort-ln"
+					th:text="#{admin.list.application.col.id}"></a></th>
+				<th><a href="#!" class="mf-sort-ln mf-sort-ln__asc"
+					th:text="#{admin.list.application.col.description}"></a></th>
+				<th><a href="#!" class="mf-sort-ln" th:text="#{admin.list.application.col.isAdmin}"></a></th>
+				<th><a href="#!" class="mf-sort-ln" th:text="#{admin.list.application.col.validarDocumentoENI}"></a></th>
+				<th><a href="#!" class="mf-sort-ln" th:text="#{admin.list.application.col.activo}"></a></th>
+				<th><a href="#!" class="mf-sort-ln" th:text="#{admin.list.application.col.serialNumber}"></a></th>
+				<th><a href="#!" class="mf-sort-ln" th:text="#{admin.list.application.col.responsable}"></a></th>
+				<th><a href="#!" class="mf-sort-ln" th:text="#{admin.list.application.col.email}"></a></th>
+				<th><a href="#!" class="mf-sort-ln" th:text="#{admin.list.application.col.telefono}"></a></th>
+			    
+			    <th th:text="#{admin.list.application.col.actions}"></th>
+				<!-- th><a href="#!" class="mf-sort-ln mf-sort-ln__asc" th:text="#{admin.application.data.scope}"></a></th-->
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="app,status  : ${aplicaciones}">
+				<td th:text="${app.idAplicacionPublico}"
+					th:id="|id_aplicacion_Publico_${status.index}|" />
+
+				<td th:text="${app.idAplicacion}"
+					th:id="|id_aplicacion_${status.index}|" />
+				<td th:text="${app.descripcion}"
+					th:id="|descripcion_aplicacion_${status.index}|" />
+					
+				<td th:text="${app.admin}"
+					th:id="|isadmin_aplicacion_${status.index}|" />	
+					
+				<td th:text="${app.validarDocumentoENI}"
+					th:id="|validarDocumentoENI_aplicacion_${status.index}|" />
+
+				<td th:text="${app.activo}"
+					th:id="|activo_aplicacion_${status.index}|" />
+					
+				<td th:text="${app.serialNumberCertificado}"
+					th:id="|serialNumber_aplicacion_${status.index}|" />		
+					
+				<td th:text="${app.nombreResponsable}"
+					th:id="|responsable_aplicacion_${status.index}|" />
+					
+				<td th:text="${app.emailResponsable}"
+					th:id="|email_aplicacion_${status.index}|" />
+
+				<td th:text="${app.telefonoResponsable}"
+					th:id="|telefono_aplicacion_${status.index}|" />
+
+				<td>
+				
+				<a th:href="|javascript:editApplication('${app.idAplicacion}');|" 
+					   th:title="#{admin.list.application.button.edit}" 
+					   th:id="|btn_edit_application_${status.index}|"
+					   class="btn-table-action btn__no-text">
+						<span class="mf-icon mf-icon-edit"></span>
+					</a>
+				
+				<a
+					th:href="|javascript:prepareDeleteApplication('${status.index}','${app.id}');|"
+					th:attr="data-confirm-question-type=#{confirm.message.first.part.question.delete}"
+					th:title="#{admin.list.application.button.delete}"
+					th:id="|btn_delete_application_${status.index}|"
+					class="btn-table-action btn__no-text"> <span
+						class="mf-icon mf-icon-delete"></span>
+				</a></td>
+			
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<script>
+		var tableApplications;
+</script>
+
+<form id="form_action_application" method="post">
+	<input type="hidden" id="hiddenIdAplicacion" name="idAplicacion"
+		value="" />
+</form>
+
+<div id="applicationInfo" title="Info" class="hidden">
+</div>
+
+<div id="popupImportCertificate" title="Certificado" class="hidden">
+	<form id="form_popup_save_cert" method="post" >
+		<div class="fld">
+			<label th:text="#{admin.cert.data.cert}"></label>
+			<input type="file" id="popupSelecCertificado" name="popupSelecCertificado"/> 
+		</div>
+		
+		<div class="fld">
+			<label th:text="#{admin.cert.data.alias}"></label>
+			<input type="text" id="popupSelecAlias" name="popupSelecAlias"/>
+		</div>
+	</form>
+	
+	<div id="errorPopupCertificado"></div>
+</div>

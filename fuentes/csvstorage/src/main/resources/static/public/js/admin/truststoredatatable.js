@@ -1,0 +1,40 @@
+
+$(document).ready(function() {
+
+    loadCertificateDatatable();
+
+});
+
+function loadCertificateDatatable() {
+    tableCertificate = $('#certificateList').dataTable({
+        "language" : {
+            "sProcessing" : "Procesando...",
+            "sLengthMenu" : "Mostrar _MENU_",
+            "sZeroRecords" : "No se encontraron resultados",
+            "sEmptyTable" : "Ningún dato disponible en esta tabla",
+            "sInfo" : "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+            "sInfoEmpty" : "Mostrando registros del 0 al 0 de un total de 0 registros",
+            "sInfoFiltered" : "(filtrado de un total de _MAX_ registros)",
+            "sInfoPostFix" : "",
+            "sSearch" : "Buscar",
+            "sUrl" : "",
+            "sInfoThousands" : ",",
+            "sLoadingRecords" : "Cargando...",
+            "oPaginate" : {
+                "sFirst" : "Primero",
+                "sLast" : "Último",
+                "sNext" : "Siguiente",
+                "sPrevious" : "Anterior"
+            },
+            "oAria" : {
+                "sSortAscending" : ": Activar para ordenar la columna de manera ascendente",
+                "sSortDescending" : ": Activar para ordenar la columna de manera descendente"
+            }
+        },
+        "lengthMenu" : [ [ 10, 25, 50, -1 ], [ 10, 25, 50, "Todo" ] ],
+        "pageLength" : 25,
+        "dom" : '<"fld dsp_ib" lf>rt<"bottom" irp><"clear">',
+        "bSort" : true,
+        "paging" : true
+    });
+}

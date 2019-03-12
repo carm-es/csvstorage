@@ -1,0 +1,241 @@
+buildscript {
+	ext {
+		//springBootVersion = '1.5.9.RELEASE'
+		springBootVersion = '1.3.8.RELEASE'
+	}
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+project.ext {
+	cxfVersion = "3.0.1"
+	cxfArtifacts = [
+		'cxf-rt-frontend-jaxws',
+		'cxf-rt-transports-http',
+		'cxf-rt-ws-security'
+	]
+	cmisVersion = "1.0.0"
+}
+
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'spring-boot'
+apply plugin: 'war'
+
+idea {
+    module {
+        inheritOutputDirs = true
+    }
+}
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+compileJava {
+  options.encoding = "ISO-8859-1" 
+}
+
+war {
+	archiveName = "${rootProject.name}.${extension}"
+}
+
+def bootRunConf = {
+    //Configuracion para arrancar la aplicacion
+    systemProperty "csvstorage.config.path", defaultConfigPath
+    minHeapSize = "512m"
+    maxHeapSize = "1024m"
+}
+
+bootRun{
+    configure bootRunConf
+    systemProperty "server.contextPath", '/csvstorage'
+}
+
+task wrapper(type: Wrapper) {
+	gradleVersion = '2.7'
+}
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+configurations {
+	cxfTool
+    all*.exclude module: 'spring-boot-starter-logging'
+	providedRuntime
+    overlay
+}
+
+configurations.all {
+	resolutionStrategy {
+		eachDependency {
+			//se sube versión de springframework para evitar las vulnerabilidades del 05/04/2018:
+			if (it.requested.group == 'org.springframework') {
+				it.useVersion '4.3.16.RELEASE'
+			}
+		}
+	}
+}
+
+test {
+    configure bootRunConf
+}
+
+dependencies {
+    
+    compile("org.springframework.boot:spring-boot-starter-web")
+    compile("org.springframework.boot:spring-boot-starter-actuator")
+	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat' //providedRuntime
+
+    //log
+	//compile group: 'org.springframework.boot', name: 'spring-boot-starter-log4j', version: '1.1.8.RELEASE'
+
+	compile("org.springframework.boot:spring-boot-starter-log4j")
+
+	// reactor
+	compile group: 'org.projectreactor', name: 'reactor-core', version: '1.1.6.RELEASE'
+
+	//mail
+    compile("javax.mail:mail:1.4.7")
+	
+	//quartz
+	compile ("org.quartz-scheduler:quartz:2.2.1")
+	compile ("org.springframework:spring-context-support")
+	
+     
+    //database
+    compile("org.springframework.boot:spring-boot-starter-data-jpa")
+	providedRuntime("com.oracle:ojdbc6:11.2.0.4") //providedRuntime
+
+    //commons
+	compile("commons-io:commons-io:2.4")
+	compile("commons-lang:commons-lang:2.6")
+	compile("commons-collections:commons-collections:3.2.1")
+	
+	//test
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile("org.hsqldb:hsqldb")
+
+    //thymeleaf
+    compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+    compile("org.thymeleaf.extras:thymeleaf-extras-springsecurity4:2.1.2.RELEASE")
+    
+    //spring-security
+    compile("org.springframework.boot:spring-boot-starter-security")   
+    compile("org.springframework.security:spring-security-web:4.0.1.RELEASE")
+    compile("org.springframework.security:spring-security-core:4.0.1.RELEASE")
+  	compile("org.springframework.security:spring-security-config:4.0.1.RELEASE")
+    
+    compile("org.springframework.integration:spring-integration-xml:4.1.4.RELEASE")
+	compile("org.springframework:spring-messaging:4.1.6.RELEASE")
+	compile("org.springframework:spring-expression:4.1.6.RELEASE")
+	compile("org.springframework:spring-tx:4.1.6.RELEASE")
+	
+	//itext
+	compile 'com.lowagie:itext:4.2.1'
+	
+	//CMIS
+//	compile("org.apache.chemistry.opencmis:chemistry-opencmis-server-support:$cmisVersion")
+//	compile("org.apache.chemistry.opencmis:chemistry-opencmis-server-bindings:$cmisVersion") {
+//		exclude group: 'com.sun.xml.ws', module: 'jaxws-rt'
+//	} 
+//	compile("org.apache.chemistry.opencmis:chemistry-opencmis-client-impl:$cmisVersion")
+	
+	compile("com.sun.xml.ws:jaxws-rt:2.2.10")
+	compile("org.jvnet.staxex:stax-ex:1.7.7")
+	
+	// Tika
+	compile("org.apache.tika:tika-core:1.14")
+	
+	cxfArtifacts.each { artifact ->
+		compile "org.apache.cxf:$artifact:$cxfVersion"
+	}
+	
+	compile("xerces:xercesImpl:2.8.0")
+	
+	compile("es.gob.aapp.eeutil:bigDataTransfer:1.0"){
+		exclude group: 'org.apache.cxf', module: 'cxf-rt-core'
+	}
+	
+
+}
+
+
+ext {
+	// Artifacts for CXF dependency.
+	cxfToolArtifacts = [
+		'cxf-tools-wsdlto-frontend-jaxws',
+		'cxf-tools-wsdlto-databinding-jaxb',
+		'cxf-tools-common',
+		'cxf-tools-wsdlto-core'
+	]
+}
+dependencies {
+	cxfToolArtifacts.each { artifact ->
+		cxfTool "org.apache.cxf:$artifact:$cxfVersion"
+	}
+}
+
+// ejecutar task para generar un cliente a partir de un WSDL
+task wsdl2java(type: JavaExec) {
+	
+	ext {
+		outputDir = file("$buildDir/generated/cxf")
+	}
+	
+	outputs.dir outputDir
+	
+	main = 'org.apache.cxf.tools.wsdlto.WSDLToJava'
+	classpath = configurations.cxfTool
+	
+	args '-d', outputDir
+	args "-client"
+	args '-verbose'
+
+	doLast {
+		//println "[INFO] CSVQueryDocumentService - Client files generated"
+	}
+}
+//compileJava.dependsOn wsdl2java
+
+
+/* codificacion de messages.properties */
+task native2ascii << {
+
+    println '>>native2ascii<<'
+
+    //Borramos el anterior messages.properties
+    ant.delete() {
+        fileset(dir: "${processResources.destinationDir}") {
+            include(name: 'messages.properties')
+        }
+    }
+
+    //Convertimos el messages a codigos ascii
+    ant.native2ascii(src: 'src/main/resources/messages_ISO8859_1',
+            dest: "${processResources.destinationDir}",
+            includes: 'messages.properties',
+            encoding: 'ISO8859_1')
+
+    //Lo llevamos a la carpeta de ejecucion de eclipse
+    if(eclipseIde.toBoolean()){
+        copy {
+            from "${processResources.destinationDir}"
+            into "${projectDir}/bin"
+            include 'messages.properties'
+        }
+    }else{// workaround intellij
+        copy {
+            from "${processResources.destinationDir}"
+            into "classes/production/csvstorage"
+            include 'messages.properties'
+        }
+    }
+}
+processResources.finalizedBy native2ascii

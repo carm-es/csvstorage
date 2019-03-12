@@ -1,0 +1,282 @@
+<!-- Copyright (C) 2012-13 MINHAP, Gobierno de España
+   This program is licensed and may be used, modified and redistributed under the terms
+   of the European Public License (EUPL), either version 1.1 or (at your
+   option) any later version as soon as they are approved by the European Commission.
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+   or implied. See the License for the specific language governing permissions and
+   more details.
+   You should have received a copy of the EUPL1.1 license
+   along with this program; if not, you may find it at
+   http://joinup.ec.europa.eu/software/page/eupl/licence-eupl -->
+
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="urn:es:gob:aapp:csvstorage:webservices:administration:v1.0" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns2="http://schemas.xmlsoap.org/soap/http" xmlns:ns1="urn:es:gob:aapp:csvstorage:webservices:administracion:model:v1.0" name="AdminService" targetNamespace="urn:es:gob:aapp:csvstorage:webservices:administration:v1.0">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:es:gob:aapp:csvstorage:webservices:administration:v1.0" xmlns:ns1="urn:es:gob:aapp:csvstorage:webservices:administration:model:v1.0" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="urn:es:gob:aapp:csvstorage:webservices:administration:v1.0">
+  <xs:import namespace="urn:es:gob:aapp:csvstorage:webservices:administration:model:v1.0"/>
+  <xs:element name="altaAplicacion" type="tns:altaAplicacion"/>
+  <xs:element name="altaAplicacionResponse" type="tns:altaAplicacionResponse"/>
+  <xs:element name="bajaAplicacion" type="tns:bajaAplicacion"/>
+  <xs:element name="bajaAplicacionResponse" type="tns:bajaAplicacionResponse"/>
+  <xs:element name="eliminaAplicacion" type="tns:eliminaAplicacion"/>
+  <xs:element name="eliminaAplicacionResponse" type="tns:eliminaAplicacionResponse"/>
+  <xs:element name="infAdicionalAltaApp" type="tns:infAdicionalAltaApp"/>
+  <xs:element name="infAdicionalAltaAppResponse" type="tns:infAdicionalAltaAppResponse"/>
+  <xs:element name="listaAplicaciones" type="tns:listaAplicaciones"/>
+  <xs:element name="listaAplicacionesResponse" type="tns:listaAplicacionesResponse"/>
+  <xs:complexType name="bajaAplicacion">
+    <xs:sequence>
+      <xs:element name="credential" type="ns1:WSCredential"/>
+      <xs:element minOccurs="0" name="idAplicacion" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="bajaAplicacionResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" ref="ns1:Aplicacion"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eliminaAplicacion">
+    <xs:sequence>
+      <xs:element name="credential" type="ns1:WSCredential"/>
+      <xs:element minOccurs="0" name="idAplicacion" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eliminaAplicacionResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" ref="ns1:Aplicacion"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="infAdicionalAltaApp">
+    <xs:sequence>
+      <xs:element name="credential" type="ns1:WSCredential"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="infAdicionalAltaAppResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" ref="ns1:InformacionAdicionalAltaApp"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="altaAplicacion">
+    <xs:sequence>
+      <xs:element name="credential" type="ns1:WSCredential"/>
+      <xs:element name="aplicacion" type="ns1:aplicacion"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="altaAplicacionResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" ref="ns1:Aplicacion"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listaAplicaciones">
+    <xs:sequence>
+      <xs:element name="credential" type="ns1:WSCredential"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listaAplicacionesResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" ref="ns1:Aplicacion"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:es:gob:aapp:csvstorage:webservices:administration:model:v1.0" targetNamespace="urn:es:gob:aapp:csvstorage:webservices:administration:model:v1.0" version="1.0">
+
+  <xs:element name="Aplicacion" type="tns:aplicacion"/>
+
+  <xs:element name="InformacionAdicionalAltaApp" type="tns:infAdicional"/>
+
+  <xs:complexType name="WSCredential">
+    <xs:sequence>
+      <xs:element name="idaplicacion" type="xs:string"/>
+      <xs:element name="password" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="aplicacion">
+    <xs:sequence>
+      <xs:element name="idAplicacion" type="xs:string"/>
+      <xs:element name="password" type="xs:string"/>
+      <xs:element name="descripcion" type="xs:string"/>
+      <xs:element name="responsable" type="xs:string"/>
+      <xs:element name="email" type="xs:string"/>
+      <xs:element minOccurs="0" name="telefono" type="xs:string"/>
+      <xs:element minOccurs="0" name="validarDocumentoENI" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="activo" type="xs:boolean"/>
+      <xs:element name="serialNumberCertificado" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="exceptionInfo">
+    <xs:sequence>
+      <xs:element name="code" type="xs:string"/>
+      <xs:element name="description" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="infAdicional">
+    <xs:sequence>
+      <xs:element name="key" type="xs:string"/>
+      <xs:element name="value" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:es:gob:aapp:csvstorage:webservices:administracion:model:v1.0" xmlns:ns0="urn:es:gob:aapp:csvstorage:webservices:administration:model:v1.0" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="urn:es:gob:aapp:csvstorage:webservices:administracion:model:v1.0">
+  <xsd:element name="errorInfo" nillable="true" type="ns0:exceptionInfo"/>
+</xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="listaAplicaciones">
+    <wsdl:part element="tns:listaAplicaciones" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="infAdicionalAltaAppResponse">
+    <wsdl:part element="tns:infAdicionalAltaAppResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="altaAplicacionResponse">
+    <wsdl:part element="tns:altaAplicacionResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="eliminaAplicacion">
+    <wsdl:part element="tns:eliminaAplicacion" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="listaAplicacionesResponse">
+    <wsdl:part element="tns:listaAplicacionesResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CSVStorageException">
+    <wsdl:part element="ns1:errorInfo" name="CSVStorageException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="bajaAplicacionResponse">
+    <wsdl:part element="tns:bajaAplicacionResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="eliminaAplicacionResponse">
+    <wsdl:part element="tns:eliminaAplicacionResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="infAdicionalAltaApp">
+    <wsdl:part element="tns:infAdicionalAltaApp" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="bajaAplicacion">
+    <wsdl:part element="tns:bajaAplicacion" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="altaAplicacion">
+    <wsdl:part element="tns:altaAplicacion" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="AdminService">
+    <wsdl:operation name="bajaAplicacion">
+      <wsdl:input message="tns:bajaAplicacion" name="bajaAplicacion">
+    </wsdl:input>
+      <wsdl:output message="tns:bajaAplicacionResponse" name="bajaAplicacionResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:CSVStorageException" name="CSVStorageException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="eliminaAplicacion">
+      <wsdl:input message="tns:eliminaAplicacion" name="eliminaAplicacion">
+    </wsdl:input>
+      <wsdl:output message="tns:eliminaAplicacionResponse" name="eliminaAplicacionResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:CSVStorageException" name="CSVStorageException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="infAdicionalAltaApp">
+      <wsdl:input message="tns:infAdicionalAltaApp" name="infAdicionalAltaApp">
+    </wsdl:input>
+      <wsdl:output message="tns:infAdicionalAltaAppResponse" name="infAdicionalAltaAppResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:CSVStorageException" name="CSVStorageException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="altaAplicacion">
+      <wsdl:input message="tns:altaAplicacion" name="altaAplicacion">
+    </wsdl:input>
+      <wsdl:output message="tns:altaAplicacionResponse" name="altaAplicacionResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:CSVStorageException" name="CSVStorageException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="listaAplicaciones">
+      <wsdl:input message="tns:listaAplicaciones" name="listaAplicaciones">
+    </wsdl:input>
+      <wsdl:output message="tns:listaAplicacionesResponse" name="listaAplicacionesResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:CSVStorageException" name="CSVStorageException">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AdminServiceSoapBinding" type="tns:AdminService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="bajaAplicacion">
+      <soap:operation soapAction="urn:bajaAplicacion" style="document"/>
+      <wsdl:input name="bajaAplicacion">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="bajaAplicacionResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CSVStorageException">
+        <soap:fault name="CSVStorageException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="eliminaAplicacion">
+      <soap:operation soapAction="urn:eliminaAplicacion" style="document"/>
+      <wsdl:input name="eliminaAplicacion">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="eliminaAplicacionResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CSVStorageException">
+        <soap:fault name="CSVStorageException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="altaAplicacion">
+      <soap:operation soapAction="urn:altaAplicacion" style="document"/>
+      <wsdl:input name="altaAplicacion">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="altaAplicacionResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CSVStorageException">
+        <soap:fault name="CSVStorageException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="infAdicionalAltaApp">
+      <soap:operation soapAction="urn:infAdicionalAltaApp" style="document"/>
+      <wsdl:input name="infAdicionalAltaApp">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="infAdicionalAltaAppResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CSVStorageException">
+        <soap:fault name="CSVStorageException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="listaAplicaciones">
+      <soap:operation soapAction="urn:listaAplicaciones" style="document"/>
+      <wsdl:input name="listaAplicaciones">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="listaAplicacionesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CSVStorageException">
+        <soap:fault name="CSVStorageException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AdminService">
+    <wsdl:port binding="tns:AdminServiceSoapBinding" name="AdminServicePort">
+      <soap:address location="https://csvstorage.redsara.es/csvstorage/services/AdminService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

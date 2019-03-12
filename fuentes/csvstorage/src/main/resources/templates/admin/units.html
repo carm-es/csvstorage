@@ -1,0 +1,89 @@
+<style>
+#ajaxSpinnerImage {
+	display: none;
+	height: 42;
+	width: 42;
+}
+</style>
+<div class="fld">
+
+	<div id="ajaxSpinnerContainer">
+		<img src="./public/images/loading.gif" id="ajaxSpinnerImage"
+			title="working..." />
+	</div>
+
+	<form id="saveForm">
+
+		<p class="fld">
+			<span class="mf-report--label">Total actualizado: </span>
+		<p class="mf-report--data" id="total" th:text="*{total}?: '-'"></p>
+		</p>
+
+		<div class="fld">
+			<label th:text="#{admin.list.unit.col.dir3}"></label>
+			<input type="text" id="dir3" name="dir3" />
+			
+			<a onclick="saveUnit();" class="simbutton primary"
+			th:title="#{admin.unit.data.savedir3}"
+			th:text="#{admin.unit.data.savedir3}"></a>
+		</div>
+		
+		<div class="fld">
+			<label th:text="#{admin.unit.data.fromDate}"></label>
+			<input type="text" id="dateBy" name="dateBy" placeholder="dd/mm/yyyy"/>
+			
+			<a onclick="saveUnitsByDate();" class="simbutton primary"
+			th:title="#{admin.unit.data.savefromDate}"
+			th:text="#{admin.unit.data.savefromDate}"></a>
+		</div>
+		
+		<div class="fld">			
+			<a onclick="saveUnits();" class="simbutton primary"
+			th:title="#{admin.unit.data.save}"
+			th:text="#{admin.unit.data.save}"></a>
+			
+			<a onclick="saveAllUnits();" class="simbutton primary"
+				th:title="#{admin.unit.data.saveall}"
+				th:text="#{admin.unit.data.saveall}"></a>	
+		
+		</div>
+		
+
+	</form>
+
+	<br />
+
+	<div id="list-dir" class="fld">
+
+		<table
+			class="mf-table-data mf-table-data__sortable mf-table-data__zebra"
+			th:fragment="list-dir" id="tableUnidades">
+
+			<thead>
+				<tr>
+					<th><a href="#!" class="mf-sort-ln"
+						th:text="#{admin.list.unit.col.dir3}"></a></th>
+					<th><a href="#!" class="mf-sort-ln"
+						th:text="#{admin.list.unit.col.descripcion}"></a></th>
+					<th></th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				
+			</tbody>
+		</table>
+
+
+	</div>
+
+
+
+</div>
+
+<div id="dialog" title="Dir3" style="width: auto; min-height: 150px;">
+		<div th:replace="admin/modals/dir3_modal :: ver_dir3"></div>
+</div>
+
+<script
+		th:src="|${#httpServletRequest.getContextPath()}/public/js/admin/unidadesDatatable.js|"></script>

@@ -1,0 +1,231 @@
+<!-- Copyright (C) 2012-13 MINHAP, Gobierno de España
+   This program is licensed and may be used, modified and redistributed under the terms
+   of the European Public License (EUPL), either version 1.1 or (at your
+   option) any later version as soon as they are approved by the European Commission.
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+   or implied. See the License for the specific language governing permissions and
+   more details.
+   You should have received a copy of the EUPL1.1 license
+   along with this program; if not, you may find it at
+   http://joinup.ec.europa.eu/software/page/eupl/licence-eupl -->
+
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="urn:es:gob:aapp:csvbroker:webservices:querydocument:v1.0" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns2="http://schemas.xmlsoap.org/soap/http" xmlns:ns1="urn:es:gob:aapp:csvbroker:webservices:querydocument:model:v1.0" name="CSVQueryDocumentCertificateService" targetNamespace="urn:es:gob:aapp:csvbroker:webservices:querydocument:v1.0">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:es:gob:aapp:csvbroker:webservices:querydocument:v1.0" xmlns:ns1="urn:es:gob:aapp:csvbroker:webservices:querydocument:model:v1.0" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="urn:es:gob:aapp:csvbroker:webservices:querydocument:v1.0">
+  <xs:import namespace="urn:es:gob:aapp:csvbroker:webservices:querydocument:model:v1.0"/>
+  <xs:element name="csvQueryDocumentWSS" type="tns:csvQueryDocumentWSS"/>
+  <xs:element name="csvQueryDocumentWSSResponse" type="tns:csvQueryDocumentWSSResponse"/>
+  <xs:complexType name="csvQueryDocumentWSS">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="queryDocumentRequest" type="ns1:CSVQueryDocumentRequest"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="csvQueryDocumentWSSResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="queryDocumentResponse" type="ns1:CSVQueryDocumentResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="csvQueryDocumentSecurityWSS">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="queryDocumentSecurityRequest" type="ns1:CSVQueryDocumentSecurityRequest"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="csvQueryDocumentSecurityWSSResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="queryDocumentSecurityResponse" type="ns1:CSVQueryDocumentSecurityResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="csvQueryDocumentSecurityWSS" nillable="true" type="tns:csvQueryDocumentSecurityWSS"/>
+  <xs:element name="csvQueryDocumentSecurityWSSResponse" nillable="true" type="tns:csvQueryDocumentSecurityWSSResponse"/>
+</xs:schema>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:es:gob:aapp:csvbroker:webservices:querydocument:model:v1.0" targetNamespace="urn:es:gob:aapp:csvbroker:webservices:querydocument:model:v1.0" version="1.0">
+
+  <xs:element name="CSVQueryDocumentResponse" type="tns:CSVQueryDocumentResponse"/>
+
+  <xs:element name="errorInfo" type="tns:csvQueryDocumentException"/>
+
+  <xs:complexType name="CSVQueryDocumentRequest">
+    <xs:sequence>
+      <xs:element name="csv" type="xs:string"/>
+      <xs:element name="dir3" type="xs:string"/>
+      <xs:element minOccurs="0" name="recuperacion_original" type="tns:recuperacionOriginal"/>
+      <xs:element minOccurs="0" name="documento_eni" type="tns:documentoEni"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="CSVQueryDocumentResponse">
+    <xs:sequence>
+      <xs:element name="code" type="xs:string"/>
+      <xs:element name="description" type="xs:string"/>
+      <xs:element minOccurs="0" name="documentResponse" type="tns:documentResponse"/>
+      <xs:element minOccurs="0" name="waitResponse" type="tns:waitResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="documentResponse">
+    <xs:sequence>
+      <xs:element name="content" type="xs:base64Binary"/>
+      <xs:element name="name" type="xs:string"/>
+      <xs:element name="mime" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="waitResponse">
+    <xs:sequence>
+      <xs:element name="secondsToWait" type="xs:long"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="csvQueryDocumentException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="code" type="xs:string"/>
+      <xs:element minOccurs="0" name="description" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="CSVQueryDocumentSecurityRequest">
+    <xs:complexContent>
+      <xs:extension base="tns:CSVQueryDocumentRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="nif" type="xs:string"/>
+          <xs:element minOccurs="0" name="tipoIdentificacion" type="tns:tipoIdentificacion"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="CSVQueryDocumentSecurityResponse">
+    <xs:sequence>
+      <xs:element name="code" type="xs:string"/>
+      <xs:element name="description" type="xs:string"/>
+      <xs:element minOccurs="0" name="documentUrlResponse" type="tns:documentUrlResponse"/>
+      <xs:element minOccurs="0" name="waitResponse" type="tns:waitResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="documentUrlResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="content" type="xs:base64Binary"/>
+      <xs:element name="name" type="xs:string"/>
+      <xs:element name="mime" type="xs:string"/>
+      <xs:element minOccurs="0" name="url" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WSCredential">
+    <xs:sequence>
+      <xs:element name="idaplicacion" type="xs:string"/>
+      <xs:element name="password" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="recuperacionOriginal">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="S"/>
+      <xs:enumeration value="N"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="documentoEni">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="S"/>
+      <xs:enumeration value="N"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="tipoIdentificacion">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CLAVE_PERM"/>
+      <xs:enumeration value="PIN24"/>
+      <xs:enumeration value="DNIE"/>
+      <xs:enumeration value="PF_2CA"/>
+      <xs:enumeration value="PJ_2CA"/>
+      <xs:enumeration value="COMPONENTESSL"/>
+      <xs:enumeration value="SEDE_ELECTRONICA"/>
+      <xs:enumeration value="SELLO_ORGANO"/>
+      <xs:enumeration value="EMPLEADO_PUBLICO"/>
+      <xs:enumeration value="ENTIDAD_NO_PERSONA_JURIDICA"/>
+      <xs:enumeration value="EMPLEADO_PUBLICO_PSEUD"/>
+      <xs:enumeration value="CUALIFICADO_SELLO_ENTIDAD"/>
+      <xs:enumeration value="CUALIFICADO_AUTENTICACION"/>
+      <xs:enumeration value="CUALIFICADO_SELLO_TIEMPO"/>
+      <xs:enumeration value="REPRESENTACION_PJ"/>
+      <xs:enumeration value="REPRESENTACION_ENTIDAD_SIN_PF"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="csvQueryDocument">
+    <wsdl:part element="tns:csvQueryDocumentWSS" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="csvQueryDocumentSecurityResponse">
+    <wsdl:part element="tns:csvQueryDocumentSecurityWSSResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="csvQueryDocumentResponse">
+    <wsdl:part element="tns:csvQueryDocumentWSSResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CSVQueryDocumentException">
+    <wsdl:part element="ns1:errorInfo" name="CSVQueryDocumentException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="csvQueryDocumentSecurity">
+    <wsdl:part element="tns:csvQueryDocumentSecurityWSS" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="CSVQueryDocumentCertificateService">
+    <wsdl:operation name="csvQueryDocument">
+      <wsdl:input message="tns:csvQueryDocument" name="csvQueryDocument">
+    </wsdl:input>
+      <wsdl:output message="tns:csvQueryDocumentResponse" name="csvQueryDocumentResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:CSVQueryDocumentException" name="CSVQueryDocumentException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="csvQueryDocumentSecurity">
+      <wsdl:input message="tns:csvQueryDocumentSecurity" name="csvQueryDocumentSecurity">
+    </wsdl:input>
+      <wsdl:output message="tns:csvQueryDocumentSecurityResponse" name="csvQueryDocumentSecurityResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:CSVQueryDocumentException" name="CSVQueryDocumentException">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CSVQueryDocumentCertificateServiceSoapBinding" type="tns:CSVQueryDocumentCertificateService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="csvQueryDocument">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="csvQueryDocument">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="csvQueryDocumentResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CSVQueryDocumentException">
+        <soap:fault name="CSVQueryDocumentException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="csvQueryDocumentSecurity">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="csvQueryDocumentSecurity">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="csvQueryDocumentSecurityResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CSVQueryDocumentException">
+        <soap:fault name="CSVQueryDocumentException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CSVQueryDocumentCertificateService">
+    <wsdl:port binding="tns:CSVQueryDocumentCertificateServiceSoapBinding" name="CSVQueryDocumentCertificateServicePort">
+      <soap:address location="https://csvstorage.redsara.es/csvstorage/services/CSVQueryDocumentCertificateService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

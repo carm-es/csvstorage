@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<!--[if lt IE 8 ]> <html class="ie ie7 no-js" lang="es" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"> <![endif]-->
+<!--[if IE 8 ]> <html class="ie ie8 no-js" lang="es" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="no-js" lang="es" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" >
+<!--<![endif]-->
+<head>
+    <title th:text="#{layout.titulo}"></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+	<!-- CSS -->
+    			    
+    <link href="|${#httpServletRequest.getContextPath()}/public/css/styles.css|" 
+    		th:href="@{/public/css/styles.css}" 
+    		rel="stylesheet" media="screen" /> 
+    
+    <link href="|${#httpServletRequest.getContextPath()}/public/css/custom.css|" 
+    		th:href="@{/public/css/custom.css}" 
+    		rel="stylesheet" media="screen" /> 
+    			     
+    			
+    <!-- JAVA SCRIPT -->
+    	
+	
+	
+	
+</head>
+<body>	
+	<div id="container" class="mf-container">
+		
+		
+		<!-- HEADER -->
+		<div th:replace="common/header :: header"></div>
+		
+		<!-- WRAPPER -->
+		<div id="wrap" class="mf-wrapper">
+		
+			
+			
+			<div id="" class="">
+	
+				<div id="contentData">
+								
+		            <div id="login" class="login">
+						<div class="login-content">
+										
+							<div class="login-column">
+								<h5 class="login-title">Importante</h5>
+								<p>Esta página requiere el uso de un certificado digital reconocido por alguna entidad oficial de certificación nacional o de DNI electrónico. Más información disponible en <a href="#!">www.seap.minhap.gob.es</a>.</p>
+								
+								<p>El certificado puede ser emitido a nombre de una persona física con autorización para representar a una entidad local (Ayuntamiento, Diputación Provincial, Cabildo Insular o Consejo Insular) o bien como persona jurídica de estas entidades.</p>
+								
+								<p>El sistema usa protocolos de comunicación seguros y toda la información se transmite cifrada. Para la firma electrónica de documentos se requiere un componente de @firma que tarda unos minutos en descargarse, instalarse y cargarse.</p>
+								
+								<h5 class="login-title">Requisitos técnicos</h5>
+								<ul>
+									<li>Conexión de Banda ancha</li> 
+									<li>Certificado digital de persona física o jurídica activo </li>
+									<li>Java 1.6+ </li>
+									<li>Navegador Internet Explorer 8+, Firefox 16+, Opera 12+, Chrome 30+</li>
+								</ul>
+								
+								<p>Si tiene problemas de acceso realice el <a href="https://ssweb.mpt.es/ssoEELL/mptAfirmaIncidencias">Test de Firma Digital</a>, con el que recibiremos información detallada de su problema y podremos ayudarle a solucionarlo.</p>
+								<p><a class="simbutton" href="https://ssweb.mpt.es/ssoEELL/mptAfirmaIncidencias">Test de firma digital</a></p>
+							</div>
+					
+							<div class="login-column">
+									
+								<div th:if="${param.error}">
+						            Invalid username and password.
+						        </div>
+						        <div th:if="${param.logout}">
+						            You have been logged out.
+						        </div>
+						        <form th:action="@{/login}" method="post">
+						            <div><label> Username: <input type="text" name="username"/> </label></div>
+						            <div><label> Password: <input type="password" name="password"/> </label></div>
+						            <div><input type="submit" th:value="#{login.submit.entrar}"/></div>
+						        </form>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+	    
+	</div>
+	
+	<div th:replace="common/footer :: footer"></div>
+	
+</body>
+</html>

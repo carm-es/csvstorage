@@ -1,0 +1,380 @@
+<!-- Copyright (C) 2012-13 MINHAP, Gobierno de España
+   This program is licensed and may be used, modified and redistributed under the terms
+   of the European Public License (EUPL), either version 1.1 or (at your
+   option) any later version as soon as they are approved by the European Commission.
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+   or implied. See the License for the specific language governing permissions and
+   more details.
+   You should have received a copy of the EUPL1.1 license
+   along with this program; if not, you may find it at
+   http://joinup.ec.europa.eu/software/page/eupl/licence-eupl -->
+
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="urn:es:gob:aapp:csvstorage:webservices:document:v1.0" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns2="http://schemas.xmlsoap.org/soap/http" xmlns:ns1="urn:es:gob:aapp:csvstorage:webservices:document:model:v1.0" name="CSVDocumentBigDataService" targetNamespace="urn:es:gob:aapp:csvstorage:webservices:document:v1.0">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:es:gob:aapp:csvstorage:webservices:document:v1.0" xmlns:ns1="urn:es:gob:aapp:csvstorage:webservices:document:model:v1.0" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="urn:es:gob:aapp:csvstorage:webservices:document:v1.0">
+  <xs:import namespace="urn:es:gob:aapp:csvstorage:webservices:document:model:v1.0"/>
+  <xs:element name="guardarDocumento" type="tns:guardarDocumento"/>
+  <xs:element name="modificarDocumento" type="tns:modificarDocumento"/>
+  <xs:element name="obtenerDocumento" type="tns:obtenerDocumento"/>
+  <xs:element name="obtenerHashDocumento" type="tns:obtenerHashDocumento"/>
+  <xs:element name="obtenerHashDocumentoResponse" type="tns:obtenerHashDocumentoResponse"/>
+  <xs:element name="obtenerInfoContenido" type="tns:obtenerInfoContenido"/>
+  <xs:element name="obtenerTamanioDocumento" type="tns:obtenerTamanioDocumento"/>
+  <xs:element name="obtenerTamanioDocumentoResponse" type="tns:obtenerTamanioDocumentoResponse"/>
+  <xs:complexType name="obtenerDocumento">
+    <xs:sequence>
+      <xs:element name="credential" type="ns1:WSCredential"/>
+      <xs:element name="obtenerDocumentoRequest" type="ns1:obtenerDocumentoRequest"/>
+      <xs:element name="url" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="guardarDocumento">
+    <xs:sequence>
+      <xs:element name="credential" type="ns1:WSCredential"/>
+      <xs:element name="guardarDocumentoRequest" type="ns1:guardarDocumentoBigDataRequest"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="modificarDocumento">
+    <xs:sequence>
+      <xs:element name="credential" type="ns1:WSCredential"/>
+      <xs:element name="modificarDocumentoRequest" type="ns1:guardarDocumentoBigDataRequest"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obtenerTamanioDocumento">
+    <xs:sequence>
+      <xs:element name="credential" type="ns1:WSCredential"/>
+      <xs:element name="uuid" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obtenerTamanioDocumentoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="documentoTamanioResponse" type="xs:long"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obtenerHashDocumento">
+    <xs:sequence>
+      <xs:element name="credential" type="ns1:WSCredential"/>
+      <xs:element name="uuid" type="xs:string"/>
+      <xs:element name="algoritmo" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obtenerHashDocumentoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="obtenerHashDocumentoResponse" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obtenerInfoContenido">
+    <xs:sequence>
+      <xs:element name="credential" type="ns1:WSCredential"/>
+      <xs:element name="uuid" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:es:gob:aapp:csvstorage:webservices:document:model:v1.0" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="urn:es:gob:aapp:csvstorage:webservices:document:model:v1.0">
+  <xs:element name="CSVStorageException" nillable="true">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="code" type="xs:string"/>
+        <xs:element name="description" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="WSCredential">
+    <xs:sequence>
+      <xs:element name="idaplicacion" type="xs:string"/>
+      <xs:element name="password" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obtenerDocumentoRequest">
+    <xs:sequence>
+      <xs:element name="dir3" type="xs:string"/>
+      <xs:element minOccurs="0" name="csv" type="xs:string"/>
+      <xs:element minOccurs="0" name="idEni" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obtenerDocumentoBigDataResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="documentoResponse" type="tns:documentoBigDataResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="documentoBigDataResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:response">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="contenido" type="tns:ContenidoInfoBigData"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="response">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="codigo" type="xs:string"/>
+      <xs:element minOccurs="0" name="descripcion" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ContenidoInfoBigData">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="files" type="xs:string"/>
+      <xs:element name="tipoMIME" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="guardarDocumentoBigDataRequest">
+    <xs:complexContent>
+      <xs:extension base="tns:documentoRequest">
+        <xs:sequence>
+          <xs:element name="contenido" type="tns:ContenidoInfoBigData"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="documentoRequest">
+    <xs:sequence>
+      <xs:element name="dir3" type="xs:string"/>
+      <xs:element minOccurs="0" name="csv" type="xs:string"/>
+      <xs:element minOccurs="0" name="idEni" type="xs:string"/>
+      <xs:element minOccurs="0" name="tipoPermiso" type="tns:tipoPermiso"/>
+      <xs:element minOccurs="0" name="nifs" type="tns:nifs"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="nifs">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="nif" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="guardarDocumentoUuidResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="responseUuid" type="tns:responseUuid"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="responseUuid">
+    <xs:complexContent>
+      <xs:extension base="tns:response">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="uuid" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="guardarDocumentoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="response" type="tns:response"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obtenerInfoContenidoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="contenidoUuidInfo" type="tns:contenidoUuidInfo"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="contenidoUuidInfo">
+    <xs:sequence>
+      <xs:element name="nombre" type="xs:string"/>
+      <xs:element name="tipoMIME" type="xs:string"/>
+      <xs:element name="url" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="consultarDocumentoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="response" type="tns:response"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="tipoPermiso">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="PUBLICO"/>
+      <xs:enumeration value="PRIVADO"/>
+      <xs:enumeration value="RESTRINGIDO_ID"/>
+      <xs:enumeration value="RESTRINGIDO_NIF"/>
+      <xs:enumeration value="RESTRINGIDO_PUB"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="obtenerDocumentoResponse" nillable="true" type="tns:obtenerDocumentoBigDataResponse"/>
+  <xs:element name="errorInfo" nillable="true"/>
+  <xs:element name="guardarDocumentoUuidResponse" nillable="true" type="tns:guardarDocumentoUuidResponse"/>
+  <xs:element name="modificarDocumentoResponse" nillable="true" type="tns:guardarDocumentoResponse"/>
+  <xs:element name="obtenerInfoContenidoResponse" nillable="true" type="tns:obtenerInfoContenidoResponse"/>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="obtenerInfoContenido">
+    <wsdl:part element="tns:obtenerInfoContenido" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CSVStorageException">
+    <wsdl:part element="ns1:errorInfo" name="CSVStorageException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="modificarDocumentoResponse">
+    <wsdl:part element="ns1:modificarDocumentoResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="obtenerInfoContenidoResponse">
+    <wsdl:part element="ns1:obtenerInfoContenidoResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="guardarDocumento">
+    <wsdl:part element="tns:guardarDocumento" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="obtenerTamanioDocumentoResponse">
+    <wsdl:part element="tns:obtenerTamanioDocumentoResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="guardarDocumentoResponse">
+    <wsdl:part element="ns1:guardarDocumentoUuidResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="obtenerHashDocumento">
+    <wsdl:part element="tns:obtenerHashDocumento" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="obtenerTamanioDocumento">
+    <wsdl:part element="tns:obtenerTamanioDocumento" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="modificarDocumento">
+    <wsdl:part element="tns:modificarDocumento" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="obtenerHashDocumentoResponse">
+    <wsdl:part element="tns:obtenerHashDocumentoResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="obtenerDocumentoResponse">
+    <wsdl:part element="ns1:obtenerDocumentoResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="obtenerDocumento">
+    <wsdl:part element="tns:obtenerDocumento" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="CSVDocumentBigDataService">
+    <wsdl:operation name="obtenerDocumento">
+      <wsdl:input message="tns:obtenerDocumento" name="obtenerDocumento">
+    </wsdl:input>
+      <wsdl:output message="tns:obtenerDocumentoResponse" name="obtenerDocumentoResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:CSVStorageException" name="CSVStorageException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="guardarDocumento">
+      <wsdl:input message="tns:guardarDocumento" name="guardarDocumento">
+    </wsdl:input>
+      <wsdl:output message="tns:guardarDocumentoResponse" name="guardarDocumentoResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:CSVStorageException" name="CSVStorageException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="modificarDocumento">
+      <wsdl:input message="tns:modificarDocumento" name="modificarDocumento">
+    </wsdl:input>
+      <wsdl:output message="tns:modificarDocumentoResponse" name="modificarDocumentoResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:CSVStorageException" name="CSVStorageException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="obtenerTamanioDocumento">
+      <wsdl:input message="tns:obtenerTamanioDocumento" name="obtenerTamanioDocumento">
+    </wsdl:input>
+      <wsdl:output message="tns:obtenerTamanioDocumentoResponse" name="obtenerTamanioDocumentoResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:CSVStorageException" name="CSVStorageException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="obtenerHashDocumento">
+      <wsdl:input message="tns:obtenerHashDocumento" name="obtenerHashDocumento">
+    </wsdl:input>
+      <wsdl:output message="tns:obtenerHashDocumentoResponse" name="obtenerHashDocumentoResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:CSVStorageException" name="CSVStorageException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="obtenerInfoContenido">
+      <wsdl:input message="tns:obtenerInfoContenido" name="obtenerInfoContenido">
+    </wsdl:input>
+      <wsdl:output message="tns:obtenerInfoContenidoResponse" name="obtenerInfoContenidoResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:CSVStorageException" name="CSVStorageException">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CSVDocumentBigDataServiceSoapBinding" type="tns:CSVDocumentBigDataService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="guardarDocumento">
+      <soap:operation soapAction="urn:guardarDocumento" style="document"/>
+      <wsdl:input name="guardarDocumento">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="guardarDocumentoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CSVStorageException">
+        <soap:fault name="CSVStorageException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="obtenerDocumento">
+      <soap:operation soapAction="urn:obtenerDocumento" style="document"/>
+      <wsdl:input name="obtenerDocumento">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="obtenerDocumentoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CSVStorageException">
+        <soap:fault name="CSVStorageException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="modificarDocumento">
+      <soap:operation soapAction="urn:modificarDocumento" style="document"/>
+      <wsdl:input name="modificarDocumento">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="modificarDocumentoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CSVStorageException">
+        <soap:fault name="CSVStorageException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="obtenerHashDocumento">
+      <soap:operation soapAction="urn:obtenerHashDocumento" style="document"/>
+      <wsdl:input name="obtenerHashDocumento">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="obtenerHashDocumentoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CSVStorageException">
+        <soap:fault name="CSVStorageException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="obtenerTamanioDocumento">
+      <soap:operation soapAction="urn:obtenerTamanioDocumento" style="document"/>
+      <wsdl:input name="obtenerTamanioDocumento">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="obtenerTamanioDocumentoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CSVStorageException">
+        <soap:fault name="CSVStorageException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="obtenerInfoContenido">
+      <soap:operation soapAction="urn:obtenerInfoContenido" style="document"/>
+      <wsdl:input name="obtenerInfoContenido">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="obtenerInfoContenidoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CSVStorageException">
+        <soap:fault name="CSVStorageException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CSVDocumentBigDataService">
+    <wsdl:port binding="tns:CSVDocumentBigDataServiceSoapBinding" name="CSVDocumentBigDataServicePort">
+      <soap:address location="https://csvstorage.redsara.es/csvstorage/services/CSVDocumentBigDataService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

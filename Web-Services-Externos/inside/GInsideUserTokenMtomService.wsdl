@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="https://ssweb.seap.minhap.es/Inside/XSD/v1.0/WebService" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns3="http://schemas.xmlsoap.org/soap/http" xmlns:ns1="https://ssweb.seap.minhap.es/Inside/XSD/v1.0/WebServiceFiles" name="GInsideUserTokenMtomWS" targetNamespace="https://ssweb.seap.minhap.es/Inside/XSD/v1.0/WebService">
+  <wsdl:import location="https://inside.desappjava.seap.minhap.es/inside/ws/GInsideUserTokenMtomService?wsdl=GInsideUserTokenMtomWebService.wsdl" namespace="https://ssweb.seap.minhap.es/Inside/XSD/v1.0/WebServiceFiles">
+    </wsdl:import>
+  <wsdl:binding name="GInsideUserTokenMtomWSSoapBinding" type="ns1:GInsideUserTokenMtomWebService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="convertirExpedienteAEniAutocontenido">
+      <soap:operation soapAction="urn:convertirExpedienteAEniAutocontenido" style="document"/>
+      <wsdl:input name="convertirExpedienteAEniAutocontenido">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="convertirExpedienteAEniAutocontenidoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InsideWSException">
+        <soap:fault name="InsideWSException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="convertirExpedienteAEniConMAdicionalesAutocontenido">
+      <soap:operation soapAction="urn:convertirExpedienteAEniConMAdicionalesAutocontenido" style="document"/>
+      <wsdl:input name="convertirExpedienteAEniConMAdicionalesAutocontenido">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="convertirExpedienteAEniConMAdicionalesAutocontenidoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InsideWSException">
+        <soap:fault name="InsideWSException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="visualizarDocumentoEni">
+      <soap:operation soapAction="urn:visualizarDocumentoEni" style="document"/>
+      <wsdl:input name="visualizarDocumentoEni">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="visualizarDocumentoEniResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InsideWSException">
+        <soap:fault name="InsideWSException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="convertirDocumentoAEni">
+      <soap:operation soapAction="urn:convertirDocumentoAEni" style="document"/>
+      <wsdl:input name="convertirDocumentoAEni">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="convertirDocumentoAEniResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InsideWSException">
+        <soap:fault name="InsideWSException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="validarDocumentoEniFile">
+      <soap:operation soapAction="urn:validarDocumentoEniFile" style="document"/>
+      <wsdl:input name="validarDocumentoEniFile">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="validarDocumentoEniFileResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InsideWSException">
+        <soap:fault name="InsideWSException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="convertirExpedienteAEni">
+      <soap:operation soapAction="urn:convertirExpedienteAEni" style="document"/>
+      <wsdl:input name="convertirExpedienteAEni">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="convertirExpedienteAEniResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InsideWSException">
+        <soap:fault name="InsideWSException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="convertirDocumentoAEniConMAdicionales">
+      <soap:operation soapAction="urn:convertirDocumentoAEniConMAdicionales" style="document"/>
+      <wsdl:input name="convertirDocumentoAEniConMAdicionales">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="convertirDocumentoAEniConMAdicionalesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InsideWSException">
+        <soap:fault name="InsideWSException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="convertirExpedienteAEniConMAdicionales">
+      <soap:operation soapAction="urn:convertirExpedienteAEniConMAdicionales" style="document"/>
+      <wsdl:input name="convertirExpedienteAEniConMAdicionales">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="convertirExpedienteAEniConMAdicionalesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InsideWSException">
+        <soap:fault name="InsideWSException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="validarExpedienteEniFile">
+      <soap:operation soapAction="urn:validarExpedienteEniFile" style="document"/>
+      <wsdl:input name="validarExpedienteEniFile">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="validarExpedienteEniFileResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InsideWSException">
+        <soap:fault name="InsideWSException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="GInsideUserTokenMtomWS">
+    <wsdl:port binding="tns:GInsideUserTokenMtomWSSoapBinding" name="GInsideUserTokenMtomWSPort">
+      <soap:address location="https://inside.desappjava.seap.minhap.es/inside/ws/GInsideUserTokenMtomService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,77 @@
+<div id="edit-user" class="fld">
+
+ <form id="form_save_user" th:fragment="edit-user" th:object="${user}">
+													
+	<fieldset>
+		<legend>
+			<span th:text="#{admin.user.new.title}"></span>
+		</legend>
+		<div class="fld">
+			<label th:for="${#ids.next('usuario')}" th:text="#{admin.user.data.user}"></label>
+			<input type="hidden" id="id" th:field="*{id}" /> 
+			<input type="text" id="usuario" th:field="*{usuario}" th:errorclass="'error'" /> 
+			<label class="error" th:if="${#fields.hasErrors('usuario')}" th:errors="*{usuario}"></label>
+		</div>
+		<div class="fld">
+			<label th:for="${#ids.next('password')}" th:text="#{admin.user.data.password}"></label>
+			<input type="password" id="password" th:field="*{password}" th:errorclass="'error'" />
+			<label class="error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></label>
+		</div>
+		<div class="fld">
+			<label th:for="${#ids.next('isAdmin')}" th:text="#{admin.user.data.isAdmin}"></label>
+			<input type="checkbox" name="isAdmin" id="isAdmin" th:field="*{isAdmin}"/>
+		</div>
+	</fieldset>	
+	
+	<fieldset class="fsubmit"></fieldset>		
+	
+	
+	<a onclick="saveUser();" class="simbutton primary"
+				th:title="#{admin.user.data.save}"
+				th:text="#{admin.user.data.save}"></a>
+	<a onclick="limpiarCamposUsuario();" class="simbutton primary"
+			th:title="#{admin.user.data.clear}" th:text="#{admin.user.data.clear}"></a>
+							
+ </form>	
+
+</div>
+
+
+<div id="list-users" class="fld">
+	
+	<table class="mf-table-data mf-table-data__sortable mf-table-data__zebra" th:fragment="list-users">
+		<thead>
+			<tr>
+				<th><a href="#!" class="mf-sort-ln" th:text="#{admin.list.user.col.user}"></a></th>
+				<th><a href="#!" class="mf-sort-ln" th:text="#{admin.list.user.col.isAdmin}"></a></th>
+				<th th:text="#{admin.list.application.col.actions}"></th>
+			</tr>	
+		</thead>
+		<tbody>		
+			<tr th:each="usuario,status  : ${users}">
+				<td th:text="${usuario.usuario}" th:id="|usuario_user_${status.index}|"/>
+				<td th:text="${usuario.isAdmin}" th:id="|isAdmin_user_${status.index}|"/>
+				<td>
+				    <a th:href="|javascript:editUser('${usuario.usuario}');|" 
+					   th:title="#{admin.list.application.button.edit}" 
+					   th:id="|btn_edit_application_${status.index}|"
+					   class="btn-table-action btn__no-text">
+						<span class="mf-icon mf-icon-edit"></span>
+					</a>
+					<a th:href="|javascript:prepareDeleteUser('${status.index}','${usuario.id}');|" 
+					   th:attr="data-confirm-question-type=#{confirm.message.first.part.question.delete}"
+					   th:title="#{admin.list.endpoint.button.delete}" 
+					   th:id="|btn_delete_user_${status.index}|"
+					   class="btn-table-action btn__no-text">
+						<span class="mf-icon mf-icon-delete"></span>
+					</a> 
+				</td>
+			</tr>										
+		</tbody>
+	</table>
+	
+</div>
+
+<form id="form_action_user" method="post" >
+	<input type="hidden" id="hiddenIdUser" name="hiddenIdUser" value="" />
+</form>

@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<xsd:element name="ReferenciaDocumento" type="TipoReferenciaDocumento" />
+
+	<xsd:complexType name="TipoReferenciaDocumento">
+		<xsd:sequence>
+			<xsd:element name="Identificador" type="TipoIdentificador" minOccurs="1"/>
+			<xsd:element name="Permiso" type="TipoPermisos" minOccurs="1"/>			
+			<xsd:element name="eEMGDE.Firma.TipoFirma.FormatoFirma" type="FormatoFirma" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="es">
+						- TF01 - CSV.
+						- TF02 - XAdES internally detached signature.
+						- TF03 - XAdES enveloped signature.
+						- TF04 - CAdES detached/explicit signature.
+						- TF05 - CAdES attached/implicit signature.
+						- TF06 - PAdES.
+						- TF07 - XAdES Manifest.
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Hash" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="Direccion" type="xsd:anyURI" minOccurs="1"/>	
+			<xsd:element name="URLVisible" type="xsd:anyURI" minOccurs="0"/>			
+			<xsd:element name="Emisor" type="TipoEmisor" minOccurs="0"/>
+			<xsd:element name="Receptor" type="TipoReceptor" minOccurs="0"/>
+			<xsd:element name="Metadatos" type="TipoMetadatos" minOccurs="0"/>
+			<xsd:element name="eEMGDE.Trazabilidad" type="TipoTrazabilidad" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="TipoIdentificador">
+		<xsd:choice minOccurs="1" maxOccurs="2">
+			<xsd:element minOccurs="0" name="eEMGDE.Firma.FormatoFirma.ValorCSV" type="xsd:string" />
+			<xsd:element minOccurs="0" name="eEMGDE.Identificador.SecuenciaIdentificador" type="xsd:string" />
+		</xsd:choice>
+	</xsd:complexType>
+	
+    <xsd:complexType name="TipoPermisos">
+        <xsd:choice minOccurs="1" maxOccurs="1">
+            <xsd:element name="Publico" type="TipoPublico"/>
+            <xsd:element name="Privado" type="TipoPrivado"/>
+            <xsd:element name="Restringido" type="TipoRestringido"/>
+        </xsd:choice>
+    </xsd:complexType>
+
+	<xsd:simpleType name="TipoPublico">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="PUBLICO" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="TipoPrivado">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="PRIVADO" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:complexType name="TipoRestringido">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" maxOccurs="1" name="RestringidoPorIdentificacion" type="TipoIdentificaciones">
+				<xsd:unique name="UniqueIdentificacion">
+					<xsd:selector xpath="Identificacion" />
+					<xsd:field xpath="." />
+				</xsd:unique>
+			</xsd:element>
+			<xsd:element minOccurs="0" maxOccurs="1" name="RestringidoNif" type="TipoNifs" />
+			<xsd:element name="EmpleadoPublico" type="xsd:boolean" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="RestringidoAplicaciones" type="TipoAplicaciones" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	
+	<xsd:complexType name="TipoIdentificaciones">
+		<xsd:sequence>
+			<xsd:element name="Identificacion" minOccurs="0" maxOccurs="unbounded" 
+			type="TipoIdentificacionesPorCertificado"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:simpleType name="TipoIdentificacionesPorCertificado">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="CLAVE_PERM" />
+			<xsd:enumeration value="PIN24" />
+			<xsd:enumeration value="DNIE" />
+			<xsd:enumeration value="PF_2CA" />
+			<xsd:enumeration value="PJ_2CA" />
+			<xsd:enumeration value="EMPLEADO_PUBLICO" />
+			<xsd:enumeration value="ENTIDAD_NO_PERSONA_JURIDICA" />
+			<xsd:enumeration value="EMPLEADO_PUBLICO_PSEUD" />
+			<xsd:enumeration value="REPRESENTACION_PJ" />
+			<xsd:enumeration value="REPRESENTACION_ENTIDAD_SIN_PF" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:complexType name="TipoNifs">
+		<xsd:sequence>
+			<xsd:element maxOccurs="unbounded" name="Nif" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="TipoAplicaciones">
+		<xsd:sequence>
+			<xsd:element maxOccurs="unbounded" name="IdAplicacion" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:simpleType name="FormatoFirma">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="TF01" />
+			<xsd:enumeration value="TF02" />
+			<xsd:enumeration value="TF03" />
+			<xsd:enumeration value="TF04" />
+			<xsd:enumeration value="TF05" />
+			<xsd:enumeration value="TF06" />
+			<xsd:enumeration value="TF07" />
+		</xsd:restriction>
+	</xsd:simpleType>
+		
+	<xsd:complexType name="TipoEmisor">
+		<xsd:sequence>
+			<xsd:element maxOccurs="unbounded" name="Organismo" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="TipoReceptor">
+		<xsd:sequence>
+			<xsd:element maxOccurs="unbounded" name="Organismo" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="TipoMetadatos">
+		<xsd:sequence>
+			<xsd:element maxOccurs="unbounded" name="Metadato" type="TipoMetadato" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="TipoMetadato">
+		<xsd:sequence>
+			<xsd:element minOccurs="1" name="Nombre" type="xsd:string" />
+			<xsd:element minOccurs="1" name="Valor" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="TipoTrazabilidad">
+		<xsd:sequence>
+			<xsd:element maxOccurs="unbounded" name="Traza" type="TipoTraza" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="TipoTraza">
+		<xsd:sequence>
+			<xsd:element minOccurs="1" name="Nombre" type="xsd:string" />
+			<xsd:element minOccurs="1" name="Valor" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+</xsd:schema>

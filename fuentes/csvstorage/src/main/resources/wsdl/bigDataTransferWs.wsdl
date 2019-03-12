@@ -1,0 +1,77 @@
+<!-- Copyright (C) 2012-13 MINHAP, Gobierno de España
+   This program is licensed and may be used, modified and redistributed under the terms
+   of the European Public License (EUPL), either version 1.1 or (at your
+   option) any later version as soon as they are approved by the European Commission.
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+   or implied. See the License for the specific language governing permissions and
+   more details.
+   You should have received a copy of the EUPL1.1 license
+   along with this program; if not, you may find it at
+   http://joinup.ec.europa.eu/software/page/eupl/licence-eupl -->
+
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://ws.bigDataTransfer.eeutil.aapp.gob.es/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="BigDataTransferWebServiceImplService" targetNamespace="http://ws.bigDataTransfer.eeutil.aapp.gob.es/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://ws.bigDataTransfer.eeutil.aapp.gob.es/" elementFormDefault="unqualified" targetNamespace="http://ws.bigDataTransfer.eeutil.aapp.gob.es/" version="1.0">
+
+  <xs:element name="sendChunkedData" type="tns:sendChunkedData"/>
+
+  <xs:element name="sendChunkedDataResponse" type="tns:sendChunkedDataResponse"/>
+
+  <xs:complexType name="sendChunkedData">
+    <xs:sequence>
+      <xs:element name="nombre" type="xs:string"/>
+      <xs:element name="bytesChunkPart" type="xs:base64Binary"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="sendChunkedDataResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="estado" type="tns:Estado"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Estado">
+    <xs:sequence>
+      <xs:element name="codigo" type="xs:int"/>
+      <xs:element name="descripcion" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="sendChunkedData">
+    <wsdl:part element="tns:sendChunkedData" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="sendChunkedDataResponse">
+    <wsdl:part element="tns:sendChunkedDataResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="BigDataTransferWebService">
+    <wsdl:operation name="sendChunkedData">
+      <wsdl:input message="tns:sendChunkedData" name="sendChunkedData">
+    </wsdl:input>
+      <wsdl:output message="tns:sendChunkedDataResponse" name="sendChunkedDataResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BigDataTransferWebServiceImplServiceSoapBinding" type="tns:BigDataTransferWebService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="sendChunkedData">
+      <soap:operation soapAction="urn:sendChunkedData" style="document"/>
+      <wsdl:input name="sendChunkedData">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="sendChunkedDataResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="BigDataTransferWebServiceImplService">
+    <wsdl:port binding="tns:BigDataTransferWebServiceImplServiceSoapBinding" name="BigDataTransferWebServiceImplPort">
+      <soap:address location="https://csvstorage.redsara.es/csvstorage/services/bigDataTransferWs"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4" 
+ 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="common/layout/csvstorage_layout">
+ 	  
+	<head>
+ 
+    	<!--<script th:src="|${#httpServletRequest.getContextPath()}/public/js/admin/admin.js|"></script>-->
+    	<script th:src="|${#httpServletRequest.getContextPath()}/public/js/admin/units.js|"></script>
+    	<!--<script th:src="|${#httpServletRequest.getContextPath()}/public/js/admin/users.js|"></script>-->
+    	<!--<script th:src="|${#httpServletRequest.getContextPath()}/public/js/admin/applications.js|"></script>-->
+    	<script th:src="|${#httpServletRequest.getContextPath()}/public/js/admin/truststore.js|"></script>
+		<script th:src="|${#httpServletRequest.getContextPath()}/public/js/admin/scan.js|"></script>
+
+	</head>
+	
+	<body>
+	
+		<div layout:fragment="content" >
+		
+			<!-- INICIO DEL CONTENIDO-->
+
+			<div class="mf-window-header">
+				<div class="mf-window-header--hgroup">
+ 					<h3 class="mf-window-header--title" th:utext="#{admin.header.title}" ></h3> 
+				</div>
+			</div>
+			
+			
+			<div id="contentData" class="mf-main--content">
+				<div class="tabs">
+					<ul class="tabs_group">
+						<li><a href="#tab2" id="tab2_link" th:text="#{admin.tab2}"></a></li>
+					</ul>
+
+					<!-- UNIDADES -->
+
+
+						<style>
+							#ajaxSpinnerImage {
+								display: none;
+								height: 42;
+								width: 42;
+							}
+						</style>
+
+						<div class="fld">
+
+							<div id="ajaxSpinnerContainer">
+								<img src="./public/images/loading.gif" id="ajaxSpinnerImage"
+									 title="working..." />
+							</div>
+
+							<p class="fld">
+								<span class="mf-report--label">Total actualizado: </span></p>
+							<p class="mf-report--data" id="total" th:text="*{total}?: '-'"></p>
+
+							<br />
+
+
+
+
+						</div>
+
+						<div id="dialog" title="Dir3" style="width: auto; min-height: 150px;">
+							<div th:replace="admin/modals/dir3_modal :: ver_dir3"></div>
+						</div>
+
+						<script
+								th:src="|${#httpServletRequest.getContextPath()}/public/js/admin/unidadesDatatable.js|"></script>
+
+
+				</div>	
+			</div>
+	            
+		</div>
+
+
+	</body>
+	
+</html>
