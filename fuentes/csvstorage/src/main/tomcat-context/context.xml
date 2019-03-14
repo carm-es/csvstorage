@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/csvstorage">
+   <ResourceLink global="jdbc/csvstorage"    name="jdbc/csvstorage"   type="javax.sql.DataSource" />
+</Context>

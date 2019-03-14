@@ -12,6 +12,7 @@
 package es.gob.aapp.csvstorage.configuration;
 
 import java.util.Properties;
+import javax.naming.InitialContext;
 import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceBuilder;
@@ -34,6 +35,9 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @EnableTransactionManagement
 public class DataSourceConfig {
+
+  @Value("${database.jndi}")
+  private String databaseJndi;
 
   @Value("${database.driver}")
   private String databaseDriver;
@@ -70,6 +74,13 @@ public class DataSourceConfig {
    */
   @Bean
   public DataSource dataSource() {
+    // FIX #11 (https://github.com/carm-es/csvstorage/issues/11)
+    // FIX #2 (https://gitlab.carm.es/SIAC/PAECARM/csvstorage/issues/2)
+    try {
+      return (DataSource) new InitialContext().lookup(databaseJndi);
+    } catch (Exception x) {
+      // Ignorar la excepción y salir según comportamiento original
+    }
     return DataSourceBuilder.create().driverClassName(databaseDriver).username(databaseUsername)
         .password(databasePassword).url(databaseUrl).build();
   }

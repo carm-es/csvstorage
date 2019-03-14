@@ -533,5 +533,18 @@
   </dependencyManagement>
   <build>
     <finalName>csvstorage</finalName>
+    <plugins>
+      <plugin>
+        <artifactId>maven-war-plugin</artifactId>
+        <configuration>
+          <webResources>
+            <resource>
+              <directory>${project.basedir}/src/main/tomcat-context</directory>
+              <targetPath>META-INF</targetPath>
+            </resource>
+          </webResources>
+        </configuration>
+      </plugin>
+    </plugins>
   </build>
 </project>
