@@ -122,13 +122,6 @@
           </execution>
         </executions>
       </plugin>
-      <!-- Evitar que instale este pom.xml en Nexus, que es una ñapa -->
-      <plugin>
-         <artifactId>maven-deploy-plugin</artifactId>
-         <configuration>
-           <skip>true</skip>
-         </configuration>
-      </plugin>
     </plugins>
   </build>
 
