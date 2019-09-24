@@ -11,6 +11,7 @@
 
 package es.gob.aapp.csvstorage.services.business.document.impl;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -100,6 +101,18 @@ public class SaveDocumentBusinessServiceImpl extends DocumentBusinessService
     return guardarDocumentoUuidResponse;
   }
 
+  private String getRutaFicheroCarm(String idApp) {
+    StringBuilder retVal = new StringBuilder();
+    String app = idApp;
+    if ((null == idApp) || (0 == idApp.trim().length())) {
+      app = "_unknown_";
+    }
+    retVal.append(rutaFichero);
+    retVal.append(File.separator);
+    retVal.append(app.toUpperCase());
+
+    return retVal.toString();
+  }
 
   private List<ApplicationEntity> getRestriccionAplicaciones(DocumentObject documentObject,
       ListaAplicaciones listaAplicaciones, Response response) throws ServiceException {
@@ -223,7 +236,7 @@ public class SaveDocumentBusinessServiceImpl extends DocumentBusinessService
     try {
 
       DocumentObject documentObject = DocumentConverter.convertGuardarDocumentToDocumenObject(
-          guardarDocumento, rutaFichero, bigFileTransferService);
+          guardarDocumento, getRutaFicheroCarm(idAplicacion), bigFileTransferService);
       ApplicationEntity aplicacion = applicationManagerService.findByIdAplicacion(idAplicacion);
       // Se convierten y validan la aplicaciones que pueden consultar el documento
       documentObject.setAplicaciones(
@@ -269,7 +282,8 @@ public class SaveDocumentBusinessServiceImpl extends DocumentBusinessService
       DocumentEntity documentEntity = new DocumentEntity();
 
       String uuid = UUID.randomUUID().toString();
-      path = DocumentConverter.obtenerRutaFichero(rutaFichero, documentObject.getDir3());
+      path = DocumentConverter.obtenerRutaFichero(getRutaFicheroCarm(idAplicacion),
+          documentObject.getDir3());
       logger.info("guardamos el documento con uuid: {}", uuid);
 
       documentObject.setPathFile(path);
@@ -338,11 +352,10 @@ public class SaveDocumentBusinessServiceImpl extends DocumentBusinessService
     String descripcion;
 
     try {
-      DocumentObject documentObject = DocumentConverter.convertGuardarDocumentToDocumenObject(
-          guardarDocumento, rutaFichero, bigFileTransferService);
-
       Authentication auth = SecurityContextHolder.getContext().getAuthentication();
       String idAplicacion = auth.getName();
+      DocumentObject documentObject = DocumentConverter.convertGuardarDocumentToDocumenObject(
+          guardarDocumento, getRutaFicheroCarm(idAplicacion), bigFileTransferService);
       ApplicationEntity aplicacion = applicationManagerService.findByIdAplicacion(idAplicacion);
 
       // Se convierten y validan la aplicaciones que pueden consultar el documento
@@ -668,12 +681,12 @@ public class SaveDocumentBusinessServiceImpl extends DocumentBusinessService
     try {
 
       logger.info("DocumentoPermisoRequest Aplicaciones: " + guardarDocumento.getAplicaciones());
-
-      DocumentObject documentObject = DocumentConverter.convertGuardarDocumentToDocumenObject(
-          guardarDocumento, rutaFichero, bigFileTransferService);
-
       Authentication auth = SecurityContextHolder.getContext().getAuthentication();
       final String idAplicacion = auth.getName();
+
+      DocumentObject documentObject = DocumentConverter.convertGuardarDocumentToDocumenObject(
+          guardarDocumento, getRutaFicheroCarm(idAplicacion), bigFileTransferService);
+
       final ApplicationEntity aplicacion =
           applicationManagerService.findByIdAplicacion(idAplicacion);
 
@@ -759,11 +772,12 @@ public class SaveDocumentBusinessServiceImpl extends DocumentBusinessService
 
       logger.info("DocumentoRevocarPermisoRequest: {}", revocarPermisos);
 
-      DocumentObject documentObject = DocumentConverter.convertGuardarDocumentToDocumenObject(
-          revocarPermisos, rutaFichero, bigFileTransferService);
-
       Authentication auth = SecurityContextHolder.getContext().getAuthentication();
       final String idAplicacion = auth.getName();
+
+      DocumentObject documentObject = DocumentConverter.convertGuardarDocumentToDocumenObject(
+          revocarPermisos, getRutaFicheroCarm(idAplicacion), bigFileTransferService);
+
       final ApplicationEntity aplicacion =
           applicationManagerService.findByIdAplicacion(idAplicacion);
 
