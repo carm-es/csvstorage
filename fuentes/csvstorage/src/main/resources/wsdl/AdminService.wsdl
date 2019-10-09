@@ -122,6 +122,7 @@
 
 </xs:schema>
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:es:gob:aapp:csvstorage:webservices:administracion:model:v1.0" xmlns:ns0="urn:es:gob:aapp:csvstorage:webservices:administration:model:v1.0" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="urn:es:gob:aapp:csvstorage:webservices:administracion:model:v1.0">
+  <xsd:import namespace="urn:es:gob:aapp:csvstorage:webservices:administration:model:v1.0"/>
   <xsd:element name="errorInfo" nillable="true" type="ns0:exceptionInfo"/>
 </xsd:schema>
   </wsdl:types>
