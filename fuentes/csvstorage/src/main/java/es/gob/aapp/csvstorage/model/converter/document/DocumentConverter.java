@@ -1053,7 +1053,8 @@ public abstract class DocumentConverter {
     // Si no existe almacenamos el documento y guardamos su
     // ruta, csv y organismo en bbdd.
     Date date = new Date();
-    SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+    // Parche #15
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd/HH");
     String fecha = sdf.format(date);
 
     // añadir a la rutas del sistema de ficheros la estructura
