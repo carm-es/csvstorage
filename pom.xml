@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>es.carm</groupId>
   <artifactId>csvstorage</artifactId>
-  <version>1.2.3-CARM.4-SNAPSHOT</version>
+  <version>1.2.3-CARM.5-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <name>CSV Storage</name>
