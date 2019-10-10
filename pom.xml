@@ -69,6 +69,7 @@
             </directories>
 	    <excludes>
                <exclude>**/*.html</exclude>
+               <exclude>**/*.css</exclude>
             </excludes>
           </configuration>
         </plugin>
