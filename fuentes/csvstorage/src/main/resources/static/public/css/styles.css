@@ -997,23 +997,17 @@ applet {
     -webkit-animation-direction: alternate
 }
 @-moz-keyframes glow_grey {
-  
   from {
     box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5);
   }
-
-  
   to {
     box-shadow: 0px 1px 7px rgba(0, 0, 0, 0.5);
   }
 }
 @-webkit-keyframes glow_grey {
-  
   from {
     -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5);
   }
-
-  
   to {
     -webkit-box-shadow: 0px 1px 7px rgba(0, 0, 0, 0.5);
   }
@@ -1033,63 +1027,41 @@ applet {
     -webkit-animation-delay: 0.7s
 }
 @-moz-keyframes shake {
-  
   0% {
     -moz-transform: translate(3px);
   }
-
-  
   20% {
     -moz-transform: translate(-3px);
   }
-
-  
   40% {
     -moz-transform: translate(6px);
   }
-
-  
   60% {
     -moz-transform: translate(-6px);
   }
-
-  
   80% {
     -moz-transform: translate(3px);
   }
-
-  
   100% {
     -moz-transform: translate(-3px);
   }
 }
 @-webkit-keyframes shake {
-  
   0% {
     -webkit-transform: translate(3px);
   }
-
-  
   20% {
     -webkit-transform: translate(-3px);
   }
-
-  
   40% {
     -webkit-transform: translate(6px);
   }
-
-  
   60% {
     -webkit-transform: translate(-6px);
   }
-
-  
   80% {
     -webkit-transform: translate(3px);
   }
-
-  
   100% {
     -webkit-transform: translate(-3px);
   }
@@ -1105,12 +1077,9 @@ applet {
     -webkit-animation-delay: 0.7s
 }
 @keyframes slidein {
-  
   from {
     bottom: 100%;
   }
-
-  
   to {
     bottom: auto;
   }
@@ -1339,7 +1308,7 @@ input[disabled][type="submit"], input[disabled][type="button"], input[disabled][
     border-right: 1px solid #999999;
     text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.5);
     background: transparent;
-    filter: progid:DXImageTransform.Microsoft.gradient( enabled=0 );
+    filter: progid:DXImageTransform.Microsoft.gradient( enabled=0);
     -moz-box-shadow: 1px 0 0 rgba(255, 255, 255, 0.05) inset, -1px 0 0 rgba(255, 255, 255, 0.15) inset;
     -webkit-box-shadow: 1px 0 0 rgba(255, 255, 255, 0.05) inset, -1px 0 0 rgba(255, 255, 255, 0.15) inset;
     box-shadow: 1px 0 0 rgba(255, 255, 255, 0.05) inset, -1px 0 0 rgba(255, 255, 255, 0.15) inset
@@ -6671,7 +6640,7 @@ input.mf-requirement--subject-input {
     background: -webkit-linear-gradient(top, rgb(252, 252, 252) 0%, rgb(224, 224, 224) 100%);
     background: -o-linear-gradient(top, rgb(252, 252, 252) 0%, rgb(224, 224, 224) 100%);
     background: -ms-linear-gradient(top, rgb(252, 252, 252) 0%, rgb(224, 224, 224) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=#fcfcfc, endColorstr=#e0e0e0,GradientType=0 );
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=#fcfcfc, endColorstr=#e0e0e0, GradientType=0);
     background: linear-gradient(to bottom, rgb(252, 252, 252) 0%, rgb(224, 224, 224) 100%)
 }
 .panel_grey h3 {
@@ -6685,7 +6654,7 @@ input.mf-requirement--subject-input {
     background: -webkit-linear-gradient(top, rgb(237, 237, 237) 0%, lightgray 100%);
     background: -o-linear-gradient(top, rgb(237, 237, 237) 0%, lightgray 100%);
     background: -ms-linear-gradient(top, rgb(237, 237, 237) 0%, lightgray 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=#ededed, endColorstr=#d3d3d3,GradientType=0 );
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=#ededed, endColorstr=#d3d3d3, GradientType=0);
     background: linear-gradient(to bottom, rgb(237, 237, 237) 0%, rgb(211, 211, 211) 100%)
 }
 .panel_grey h4 {
@@ -8553,7 +8522,7 @@ label, .label, .mf-report--label, .label, .mf-report--label, .mf-report--label {
     background: -o-linear-gradient(top, white 0%, rgb(242, 242, 242) 6%, rgb(229, 229, 229) 94%, rgb(209, 209, 209) 100%);
     background: -ms-linear-gradient(top, white 0%, rgb(242, 242, 242) 6%, rgb(229, 229, 229) 94%, rgb(209, 209, 209) 100%);
     background: linear-gradient(to bottom, rgb(255, 255, 255) 0%, rgb(242, 242, 242) 6%, rgb(229, 229, 229) 94%, rgb(209, 209, 209) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=#ffffff, endColorstr=#d1d1d1,GradientType=0 );
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=#ffffff, endColorstr=#d1d1d1, GradientType=0);
     border-bottom: 1px solid #8c8c8c
 }
 .pager {
@@ -8589,12 +8558,9 @@ li .mf-dropdown--container ul li:last-child {
     -webkit-animation-direction: alternate
 }
 @-moz-keyframes glow_grey {
-  
   from {
     height: 24px;
   }
-
-  
   to {
     height: 100px;
   }
@@ -8673,7 +8639,7 @@ input[type="submit"], input[type="button"], input[type="reset"], button, .mf-but
     background: -o-linear-gradient(top, rgb(40, 180, 178) 0%, rgb(19, 176, 173) 6%, rgb(10, 156, 153) 94%, rgb(2, 140, 138) 100%);
     background: -ms-linear-gradient(top, rgb(40, 180, 178) 0%, rgb(19, 176, 173) 6%, rgb(10, 156, 153) 94%, rgb(2, 140, 138) 100%);
     background: linear-gradient(to bottom, rgb(40, 180, 178) 0%, rgb(19, 176, 173) 6%, rgb(10, 156, 153) 94%, rgb(2, 140, 138) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=#28b4b2, endColorstr=#028c8a,GradientType=0 )
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=#28b4b2, endColorstr=#028c8a, GradientType=0)
 }
 .mf-dialog--title {
     padding: 5px 22px
@@ -8866,7 +8832,7 @@ ul.mtree ul {
     background: -o-linear-gradient(top, whitesmoke 0%, rgb(235, 235, 235) 100%);
     background: -ms-linear-gradient(top, whitesmoke 0%, rgb(235, 235, 235) 100%);
     background: linear-gradient(to bottom, rgb(245, 245, 245) 0%, rgb(235, 235, 235) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=#f5f5f5, endColorstr=#ebebeb,GradientType=0 );
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=#f5f5f5, endColorstr=#ebebeb, GradientType=0);
     border-bottom: 1px solid #aaaaaa
 }
 .levels .mf-table-data thead th, .mf-table-data thead th {

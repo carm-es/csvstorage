@@ -1,3 +1,4 @@
+<?xml version='1.0' encoding='UTF-8'?>
 <!-- Copyright (C) 2012-13 MINHAP, Gobierno de España
    This program is licensed and may be used, modified and redistributed under the terms
    of the European Public License (EUPL), either version 1.1 or (at your
@@ -10,8 +11,7 @@
    You should have received a copy of the EUPL1.1 license
    along with this program; if not, you may find it at
    http://joinup.ec.europa.eu/software/page/eupl/licence-eupl -->
-
-<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="urn:es:gob:aapp:csvstorage:webservices:documentmtom:v1.0" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns2="http://schemas.xmlsoap.org/soap/http" xmlns:ns1="urn:es:gob:aapp:csvstorage:webservices:document:model:v1.0" name="CSVDocumentWSMtomService" targetNamespace="urn:es:gob:aapp:csvstorage:webservices:documentmtom:v1.0">
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="urn:es:gob:aapp:csvstorage:webservices:documentmtom:v1.0" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns2="http://schemas.xmlsoap.org/soap/http" xmlns:ns1="urn:es:gob:aapp:csvstorage:webservices:document:model:v1.0" name="CSVDocumentWSMtomService" targetNamespace="urn:es:gob:aapp:csvstorage:webservices:documentmtom:v1.0">
   <wsdl:types>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:es:gob:aapp:csvstorage:webservices:documentmtom:v1.0" xmlns:ns2="urn:es:gob:aapp:csvstorage:webservices:document:model:v1.0" xmlns:ns1="urn:es:gob:aapp:csvstorage:webservices:documentmtom:model:v1.0" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="urn:es:gob:aapp:csvstorage:webservices:documentmtom:v1.0">
   <xs:import namespace="urn:es:gob:aapp:csvstorage:webservices:documentmtom:model:v1.0"/>
@@ -146,6 +146,7 @@
 </xs:schema>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:es:gob:aapp:csvstorage:webservices:document:model:v1.0" xmlns:ns1="urn:es:gob:aapp:csvstorage:webservices:documentmtom:model:v1.0" xmlns:ns0="http://administracionelectronica.gob.es/ENI/XSD/v1.0/documento-e/metadatos" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="urn:es:gob:aapp:csvstorage:webservices:document:model:v1.0">
   <xs:import namespace="urn:es:gob:aapp:csvstorage:webservices:documentmtom:model:v1.0"/>
+  <xs:import namespace="http://administracionelectronica.gob.es/ENI/XSD/v1.0/documento-e/metadatos"/>
   <xs:element name="CSVStorageException" nillable="true">
     <xs:complexType>
       <xs:sequence>
@@ -490,7 +491,8 @@
     </xs:sequence>
   </xs:complexType>
 </xs:schema>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://administracionelectronica.gob.es/ENI/XSD/v1.0/firma" elementFormDefault="qualified" targetNamespace="http://administracionelectronica.gob.es/ENI/XSD/v1.0/firma" version="1.0">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://administracionelectronica.gob.es/ENI/XSD/v1.0/firma" elementFormDefault="qualified" targetNamespace="http://administracionelectronica.gob.es/ENI/XSD/v1.0/firma" version="1.0" xmlns:ns1="http://www.w3.org/2000/09/xmldsig#">
+  <xs:import namespace="http://www.w3.org/2000/09/xmldsig#"/>
 
   <xs:element name="firmas" type="tns:firmas"/>
 
@@ -518,7 +520,7 @@
               <xs:complexType>
                 <xs:sequence>
                   <xs:element minOccurs="0" name="FirmaBase64" type="xs:base64Binary"/>
-                  <xs:element xmlns:ns1="http://www.w3.org/2000/09/xmldsig#" minOccurs="0" name="Signature" type="ns1:SignatureType"/>
+                  <xs:element minOccurs="0" name="Signature" type="ns1:SignatureType"/>
                   <xs:element minOccurs="0" name="ReferenciaFirma" type="xs:anyType"/>
                 </xs:sequence>
               </xs:complexType>
