@@ -1040,6 +1040,32 @@ public abstract class DocumentConverter {
   }
 
   /**
+   * Parche #19 Obtiene una cadena con formato yyyy/MM/dd/HHX, donde yyyy es el año actual, MM dos
+   * dígitos correspondientes al mes en curso, dd es el día del mes, HH es la hora en la que se
+   * llama a la función (en formato HH24) y X es la fracción de los minutos, de manera que desde el
+   * minuto 0 a 9 =0, desde el 10 al 19 es=1, etc...
+   * 
+   * @return Devuevle una cadena con formato yyyy/MM/dd/HHX, en base a la fecha actual
+   */
+  private static String obtenerRutaPorFecha() {
+    Date date = new Date();
+    // Obtener ruta inicial (Parche #15)
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd/HH");
+    String fecha = sdf.format(date);
+
+    // Ahora obtener la fracción del minuto
+    int m = 0;
+    try {
+      SimpleDateFormat minuto = new SimpleDateFormat("mm");
+      m = Integer.parseInt(minuto.format(date));
+    } catch (Exception x) {
+      // Uff, mal rollo aquí una exception, pero la ignoramos...
+    }
+    int fraccion = m / 10;
+    return fecha + fraccion;
+  }
+
+  /**
    * Devuelve la ruta donde se van a almacenar los documentos
    * 
    * @param dir3 dir3
@@ -1052,13 +1078,11 @@ public abstract class DocumentConverter {
 
     // Si no existe almacenamos el documento y guardamos su
     // ruta, csv y organismo en bbdd.
-    Date date = new Date();
-    // Parche #15
-    SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd/HH");
-    String fecha = sdf.format(date);
+    // Parche #19
+    String fecha = obtenerRutaPorFecha();
 
     // añadir a la rutas del sistema de ficheros la estructura
-    // /Año/Mes/Día/dir3
+    // /Año/Mes/Día/HoraFracionMinuto/dir3
     path.append(rutaFichero);
     path.append(separator);
     path.append(fecha.replace("/", separator));
