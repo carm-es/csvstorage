@@ -30,7 +30,7 @@ public class MimeType {
    * Map permita meter los 2 mimes. Después, al obtener la extensión llamando al metodo
    * extractExtensionFromMIMEType, hacemos un substring hasta el "-"
    */
-  private final String mimeTypes[][] = {{"txt", "text/plain"}, {"html", "text/html"},
+  private static final String mimeTypes[][] = {{"txt", "text/plain"}, {"html", "text/html"},
       {"xhtml", "application/xhtml+xml"}, {"ps", "application/postscript"},
       {"aiff", "audio/x-aiff"}, {"acp", "application/acp"}, {"au", "audio/basic"},
       {"avi", "video/x-msvideo"}, {"avi-1", "application/x-troff-msvideo"},
@@ -91,20 +91,20 @@ public class MimeType {
   /**
    * El Content-Type del MIME por defecto El valor de esta constante es {@value}.
    */
-  private static HashMap<String, String> mimes = null;
-  private static HashMap<String, String> extensions = null;
+  private HashMap<String, String> mimes = null;
+  private HashMap<String, String> extensions = null;
   private static MimeType instance = null;
 
   /**
    * Puebla el mapa de la variable 'mimes' con los valores de 'mimeTypes'
    */
   private MimeType() {
-    mimes = new HashMap<String, String>();
+    mimes = new HashMap<>();
     for (int i = 0; i < mimeTypes.length; i++) {
       mimes.put(mimeTypes[i][0], mimeTypes[i][1]);
     }
 
-    extensions = new HashMap<String, String>();
+    extensions = new HashMap<>();
     for (int i = 0; i < mimeTypes.length; i++) {
       extensions.put(mimeTypes[i][1], mimeTypes[i][0]);
     }
