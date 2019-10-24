@@ -60,7 +60,7 @@
           <version>2.8.1</version>
 	  <configuration>
             <configFile>${maven.multiModuleProjectDirectory}/.mvn/eclipse-java-google-style.xml</configFile>
-            <lineEnding>LF</lineEnding>
+            <lineEnding>AUTO</lineEnding>
 	    <directories>
               <directory>${basedir}/src/main/java</directory>
               <directory>${basedir}/src/main/resources</directory>
