@@ -282,8 +282,11 @@ public class SaveDocumentBusinessServiceImpl extends DocumentBusinessService
       DocumentEntity documentEntity = new DocumentEntity();
 
       String uuid = UUID.randomUUID().toString();
-      path = DocumentConverter.obtenerRutaFichero(getRutaFicheroCarm(idAplicacion),
-          documentObject.getDir3());
+      path = StringUtils.isNotEmpty(documentObject.getContenidoPorRef())
+          ? documentObject.getContenidoPorRef().substring(0,
+              documentObject.getContenidoPorRef().lastIndexOf(Constants.FILE_SEPARATOR))
+          : DocumentConverter.obtenerRutaFichero(getRutaFicheroCarm(idAplicacion),
+              documentObject.getDir3());
       logger.info("guardamos el documento con uuid: {}", uuid);
 
       documentObject.setPathFile(path);
