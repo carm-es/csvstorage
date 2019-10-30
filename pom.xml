@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>es.carm</groupId>
   <artifactId>csvstorage</artifactId>
-  <version>1.2.3-CARM.13</version>
+  <version>1.2.3-CARM.14-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <name>CSV Storage</name>
@@ -13,7 +13,7 @@
     <connection>scm:git:https://github.com/carm-es/csvstorage.git</connection>
     <developerConnection>scm:git:[push=]https://github.com/carm-es/csvstorage.git[fetch=]https://github.com/carm-es/csvstorage.git</developerConnection>
     <url>https://github.com/carm-es/csvstorage.git</url>    	
-    <tag>csvstorage-1.2.3-CARM.13</tag>
+    <tag>HEAD</tag>
   </scm>
 
   <properties>
