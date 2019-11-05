@@ -6,7 +6,7 @@
   <parent>
     <groupId>es.carm</groupId>
     <artifactId>csvstorage</artifactId>
-    <version>1.2.3-CARM.14-SNAPSHOT</version>
+    <version>1.2.3-CARM.14</version>
     <relativePath>../..</relativePath>
   </parent>
 
