@@ -138,8 +138,11 @@ public class SaveDocumentEniBusinessServiceImpl extends DocumentBusinessService
       } else {
         DocumentEntity documentEntity = new DocumentEntity();
 
-        String path =
-            DocumentConverter.obtenerRutaFichero(rutaFichero, documentEniObject.getDir3());
+        String path = StringUtils.isNotEmpty(documentEniObject.getContenidoPorRef())
+            ? documentEniObject.getContenidoPorRef().substring(0,
+                documentEniObject.getContenidoPorRef().lastIndexOf(Constants.FILE_SEPARATOR))
+            : DocumentConverter.obtenerRutaFichero(this.getRutaFicheroCarm(idAplicacion),
+                documentEniObject.getDir3());
         String uuid = UUID.randomUUID().toString();
         LOG.debug("Guardamos el documento ENI con el uuid: " + uuid);
 

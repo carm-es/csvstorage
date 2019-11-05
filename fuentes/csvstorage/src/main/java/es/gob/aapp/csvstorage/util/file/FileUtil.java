@@ -27,6 +27,7 @@ import java.nio.file.StandardCopyOption;
 import java.security.MessageDigest;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
 import es.gob.aapp.csvstorage.services.exception.ValidationException;
@@ -282,8 +283,13 @@ public class FileUtil {
 
     File oldfile = new File(path);
     File newfile = new File(oldfile.getParent() + SEPARATOR + newName);
-    correct = oldfile.renameTo(newfile);
-    correct = true;
+    try {
+      FileUtils.moveFile(oldfile, newfile);
+      correct = true;
+    } catch (IOException e) {
+      LOG.warn("No se ha podido renombrar el documento " + path, e);
+    }
+
     LOG.info("renameFile end");
     return correct;
 

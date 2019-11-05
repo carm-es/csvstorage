@@ -285,7 +285,10 @@ public class DocumentManagerServiceImpl implements DocumentManagerService {
 
       name = entity.getUuid() + Constants.BIG_FILE_NAME;
 
-      FileUtil.renameFile(documentObject.getContenidoPorRef(), name);
+      if (!FileUtil.renameFile(documentObject.getContenidoPorRef(), name)) {
+        throw new ServiceException("Se ha producido un error al renombrar el fichero "
+            + documentObject.getContenidoPorRef());
+      }
 
       String refFile = Constants.REF_FILE + documentObject.getPathFile() + separator + name;
       documentInfo.setContenido(refFile.getBytes());
@@ -378,7 +381,10 @@ public class DocumentManagerServiceImpl implements DocumentManagerService {
 
       name = entity.getUuid() + Constants.BIG_FILE_NAME;
 
-      FileUtil.renameFile(documentEniObject.getContenidoPorRef(), name);
+      if (!FileUtil.renameFile(documentEniObject.getContenidoPorRef(), name)) {
+        throw new ServiceException("Se ha producido un error al renombrar el fichero "
+            + documentEniObject.getContenidoPorRef());
+      }
 
       String refFile = Constants.REF_FILE + entity.getRutaFichero() + separator + name;
       documentInfo.setContenido(refFile.getBytes());
