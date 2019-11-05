@@ -101,19 +101,6 @@ public class SaveDocumentBusinessServiceImpl extends DocumentBusinessService
     return guardarDocumentoUuidResponse;
   }
 
-  private String getRutaFicheroCarm(String idApp) {
-    StringBuilder retVal = new StringBuilder();
-    String app = idApp;
-    if ((null == idApp) || (0 == idApp.trim().length())) {
-      app = "_unknown_";
-    }
-    retVal.append(rutaFichero);
-    retVal.append(File.separator);
-    retVal.append(app.toUpperCase());
-
-    return retVal.toString();
-  }
-
   private List<ApplicationEntity> getRestriccionAplicaciones(DocumentObject documentObject,
       ListaAplicaciones listaAplicaciones, Response response) throws ServiceException {
     List<ApplicationEntity> result = null;

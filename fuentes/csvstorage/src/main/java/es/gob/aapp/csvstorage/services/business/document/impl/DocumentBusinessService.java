@@ -11,6 +11,7 @@
 
 package es.gob.aapp.csvstorage.services.business.document.impl;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -94,6 +95,19 @@ public class DocumentBusinessService {
   private AuditManagerService auditManagerService;
 
   protected static final Locale locale = LocaleContextHolder.getLocale();
+
+  protected String getRutaFicheroCarm(String idApp) {
+    StringBuilder retVal = new StringBuilder();
+    String app = idApp;
+    if ((null == idApp) || (0 == idApp.trim().length())) {
+      app = "_unknown_";
+    }
+    retVal.append(rutaFichero);
+    retVal.append(File.separator);
+    retVal.append(app.toUpperCase());
+
+    return retVal.toString();
+  }
 
   protected void guardarDocumento(DocumentEntity documentEntity, DocumentObject documentObject,
       UnitEntity unidad, ApplicationEntity applicacion, boolean modificar)
