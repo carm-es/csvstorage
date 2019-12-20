@@ -440,7 +440,7 @@
     <dependency>
       <groupId>org.apache.tika</groupId>
       <artifactId>tika-core</artifactId>
-      <version>1.14</version>
+      <version>1.22</version>
       <scope>compile</scope>
       <exclusions>
         <exclusion>
