@@ -11,11 +11,11 @@
    You should have received a copy of the EUPL1.1 license
    along with this program; if not, you may find it at
    http://joinup.ec.europa.eu/software/page/eupl/licence-eupl --> 
-<beans xmlns="http://www.springframework.org/schema/beans" xmlns:sec="http://www.springframework.org/schema/security" xmlns:jaxws="http://cxf.apache.org/jaxws" xmlns:context="http://www.springframework.org/schema/context" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
-						http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
-                        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.0.xsd
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:sec="http://www.springframework.org/schema/security" xmlns:jaxws="http://cxf.apache.org/jaxws" xmlns:context="http://www.springframework.org/schema/context" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+						http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+                        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.2.xsd
                         http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd
-                        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd"> 
+                        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd"> 
     <context:annotation-config /> 
     <context:component-scan base-package="es.gob.aapp.csvstorage, es.gob.aapp.eeutil.bigDataTransfer" /> 
     <import resource="classpath:META-INF/cxf/cxf.xml" /> 
@@ -38,7 +38,7 @@
     <bean id="applicationUserDetailService" class="es.gob.aapp.csvstorage.services.business.security.ApplicationUserDetailServiceImpl" /> 
     <bean id="ApplicationBusinessService" class="es.gob.aapp.csvstorage.services.business.application.impl.ApplicationBusinessServiceImpl" /> 
     <bean id="customUserTokenValidator" class="es.gob.aapp.csvstorage.webservices.security.wss4j.CustomUserTokenValidator" /> 
-    <sec:authentication-manager alias="authenticationManager"> 
+    <sec:authentication-manager id="authenticationManager"> 
         <sec:authentication-provider user-service-ref="applicationUserDetailService"> 
             <sec:password-encoder hash="sha-256" /> 
         </sec:authentication-provider> 
