@@ -13,106 +13,141 @@
   <name>Aplicación WAR</name>
   <packaging>war</packaging>
 
+  <properties>
+     <version.springframework>4.3.28.RELEASE</version.springframework>
+     <version.springframework.security>4.2.18.RELEASE</version.springframework.security>
+     <version.springframework.boot>1.3.8.RELEASE</version.springframework.boot>
+     <version.springframework.integration>4.3.23.RELEASE</version.springframework.integration>
+     <version.cxf>3.0.1</version.cxf>
+
+     <version.projectreactor>1.1.6.RELEASE</version.projectreactor>
+     <version.thymeleaf>2.1.3.RELEASE</version.thymeleaf>
+     <version.hibernate>5.3.6.Final</version.hibernate>
+     <version.itextpdf>5.5.6</version.itextpdf>
+     <version.itext.lowagie>4.2.1</version.itext.lowagie>
+     <version.com_sun_xml_ws_jaxws-rt>2.2.10</version.com_sun_xml_ws_jaxws-rt>
+     <version.jackson-databind>2.6.7.3</version.jackson-databind>
+     <version.javax-mail>1.4.7</version.javax-mail>
+     <version.xercesImpl>2.12.0</version.xercesImpl>
+     <version.staxex>1.7.7</version.staxex>
+     <version.tika>1.22</version.tika>
+     <version.quartz>2.3.2</version.quartz>
+
+     <version.codehaus.groovy>2.4.17</version.codehaus.groovy>
+     <version.codehaus.woodstox.core>4.4.0</version.codehaus.woodstox.core>
+     <version.codehaus.woodstox.stax>3.1.4</version.codehaus.woodstox.stax>
+
+     <version.commons-io>2.4</version.commons-io>
+     <version.commons-lang>2.6</version.commons-lang>
+     <version.commons-collections>3.2.2</version.commons-collections>
+     <version.commons-logging>1.2</version.commons-logging>
+
+     <version.slf4j-log4j12>1.7.26</version.slf4j-log4j12>
+     <version.log4j>1.2.17</version.log4j>
+
+     <version.tomcat>8.0.37</version.tomcat>
+
+  </properties>
 
 
   <dependencies>
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-core</artifactId>
-      <version>4.3.28.RELEASE</version>
+      <version>${version.springframework}</version>
     </dependency>
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-context</artifactId>
-      <version>4.3.28.RELEASE</version>
+      <version>${version.springframework}</version>
     </dependency>
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-aop</artifactId>
-      <version>4.3.28.RELEASE</version>
+      <version>${version.springframework}</version>
     </dependency>
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-jdbc</artifactId>
-      <version>4.3.28.RELEASE</version>
+      <version>${version.springframework}</version>
     </dependency>
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-orm</artifactId>
-      <version>4.3.28.RELEASE</version>
+      <version>${version.springframework}</version>
     </dependency>
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-oxm</artifactId>
-      <version>4.3.28.RELEASE</version>
+      <version>${version.springframework}</version>
     </dependency>
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-web</artifactId>
-      <version>4.3.28.RELEASE</version>
+      <version>${version.springframework}</version>
     </dependency>
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-webmvc</artifactId>
-      <version>4.3.28.RELEASE</version>
+      <version>${version.springframework}</version>
     </dependency>
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-log4j12</artifactId>
-      <version>1.7.26</version>
+      <version>${version.slf4j-log4j12}</version>
     </dependency>
     <!-- Para poder rotar los logs y comprimirlos -->
     <dependency>
       <groupId>log4j</groupId>
       <artifactId>apache-log4j-extras</artifactId>
-      <version>1.2.17</version>
+      <version>${version.log4j}</version>
     </dependency>
 
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-databind</artifactId>
-      <version>2.6.7.3</version>
+      <version>${version.jackson-databind}</version>
     </dependency>
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-aspects</artifactId>
-      <version>4.3.28.RELEASE</version>
+      <version>${version.springframework}</version>
     </dependency>
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-beans</artifactId>
-      <version>4.3.28.RELEASE</version>
+      <version>${version.springframework}</version>
     </dependency>
 
     <dependency>
       <groupId>org.codehaus.groovy</groupId>
       <artifactId>groovy</artifactId>
-      <version>2.4.17</version>
+      <version>${version.codehaus.groovy}</version>
     </dependency>
     <dependency>
       <groupId>org.codehaus.woodstox</groupId>
       <artifactId>woodstox-core-asl</artifactId>
-      <version>4.4.0</version>
+      <version>${version.codehaus.woodstox.core}</version>
     </dependency>
     <dependency>
       <groupId>org.codehaus.woodstox</groupId>
       <artifactId>stax2-api</artifactId>
-      <version>3.1.4</version>
+      <version>${version.codehaus.woodstox.stax}</version>
     </dependency>
     <dependency>
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-validator</artifactId>
-      <version>5.3.6.Final</version>
+      <version>${version.hibernate}</version>
     </dependency>
     <dependency>
       <groupId>commons-logging</groupId>
       <artifactId>commons-logging</artifactId>
-      <version>1.2</version>
+      <version>${version.commons-logging}</version>
     </dependency>
     <dependency>
       <groupId>org.thymeleaf.extras</groupId>
       <artifactId>thymeleaf-extras-springsecurity4</artifactId>
-      <version>2.1.3.RELEASE</version>
+      <version>${version.thymeleaf}</version>
       <scope>compile</scope>
       <exclusions>
         <exclusion>
@@ -124,7 +159,7 @@
     <dependency>
       <groupId>org.springframework.security</groupId>
       <artifactId>spring-security-config</artifactId>
-      <version>4.2.18.RELEASE</version>
+      <version>${version.springframework.security}</version>
       <scope>compile</scope>
       <exclusions>
         <exclusion>
@@ -136,7 +171,7 @@
     <dependency>
       <groupId>org.apache.cxf</groupId>
       <artifactId>cxf-rt-frontend-jaxws</artifactId>
-      <version>3.0.1</version>
+     <version>${version.cxf}</version>
       <scope>compile</scope>
       <exclusions>
         <exclusion>
@@ -148,19 +183,19 @@
     <dependency>
       <groupId>org.apache.tomcat.embed</groupId>
       <artifactId>tomcat-embed-el</artifactId>
-      <version>8.0.37</version>
+      <version>${version.tomcat}</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-tomcat</artifactId>
-      <version>1.3.8.RELEASE</version>
+      <version>${version.springframework.boot}</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
-      <version>1.3.8.RELEASE</version>
+      <version>${version.springframework.boot}</version>
       <exclusions>
         <exclusion>
           <artifactId>esapi</artifactId>
@@ -175,7 +210,7 @@
     <dependency>
       <groupId>org.springframework.security</groupId>
       <artifactId>spring-security-core</artifactId>
-      <version>4.2.18.RELEASE</version>
+      <version>${version.springframework.security}</version>
       <scope>compile</scope>
       <exclusions>
         <exclusion>
@@ -192,7 +227,7 @@
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-log4j</artifactId>
-      <version>1.3.8.RELEASE</version>
+      <version>${version.springframework.boot}</version>
       <exclusions>
         <exclusion>
           <artifactId>esapi</artifactId>
@@ -218,7 +253,7 @@
     <dependency>
       <groupId>javax.mail</groupId>
       <artifactId>mail</artifactId>
-      <version>1.4.7</version>
+      <version>${version.javax-mail}</version>
       <scope>compile</scope>
       <exclusions>
         <exclusion>
@@ -230,7 +265,7 @@
     <dependency>
       <groupId>commons-collections</groupId>
       <artifactId>commons-collections</artifactId>
-      <version>3.2.2</version>
+      <version>${version.commons-collections}</version>
       <scope>compile</scope>
       <exclusions>
         <exclusion>
@@ -242,12 +277,12 @@
     <dependency>
       <groupId>com.itextpdf</groupId>
       <artifactId>itextpdf</artifactId>
-      <version>5.5.6</version>
+      <version>${version.itextpdf}</version>
     </dependency>
     <dependency>
       <groupId>com.lowagie</groupId>
       <artifactId>itext</artifactId>
-      <version>4.2.1</version>
+      <version>${version.itext.lowagie}</version>
       <scope>compile</scope>
       <exclusions>
         <exclusion>
@@ -259,7 +294,7 @@
     <dependency>
       <groupId>com.sun.xml.ws</groupId>
       <artifactId>jaxws-rt</artifactId>
-      <version>2.2.10</version>
+      <version>${version.com_sun_xml_ws_jaxws-rt}</version>
       <scope>compile</scope>
       <exclusions>
         <exclusion>
@@ -271,13 +306,13 @@
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>
-      <version>1.3.8.RELEASE</version>
+      <version>${version.springframework.boot}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>xerces</groupId>
       <artifactId>xercesImpl</artifactId>
-      <version>2.12.0</version>
+      <version>${version.xercesImpl}</version>
       <scope>compile</scope>
       <exclusions>
         <exclusion>
@@ -289,7 +324,7 @@
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-logging</artifactId>
-      <version>1.3.8.RELEASE</version>
+      <version>${version.springframework.boot}</version>
       <scope>provided</scope>
       <exclusions>
         <exclusion>
@@ -309,7 +344,7 @@
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-data-jpa</artifactId>
-      <version>1.3.8.RELEASE</version>
+      <version>${version.springframework.boot}</version>
       <scope>compile</scope>
       <exclusions>
         <exclusion>
@@ -321,7 +356,7 @@
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-tx</artifactId>
-      <version>4.3.28.RELEASE</version>
+      <version>${version.springframework}</version>
       <scope>compile</scope>
       <exclusions>
         <exclusion>
@@ -333,7 +368,7 @@
     <dependency>
       <groupId>org.projectreactor</groupId>
       <artifactId>reactor-core</artifactId>
-      <version>1.1.6.RELEASE</version>
+      <version>${version.projectreactor}</version>
       <scope>compile</scope>
       <exclusions>
         <exclusion>
@@ -345,7 +380,7 @@
     <dependency>
       <groupId>commons-io</groupId>
       <artifactId>commons-io</artifactId>
-      <version>2.4</version>
+      <version>${version.commons-io}</version>
       <scope>compile</scope>
       <exclusions>
         <exclusion>
@@ -357,7 +392,7 @@
     <dependency>
       <groupId>org.jvnet.staxex</groupId>
       <artifactId>stax-ex</artifactId>
-      <version>1.7.7</version>
+      <version>${version.staxex}</version>
       <scope>compile</scope>
       <exclusions>
         <exclusion>
@@ -369,7 +404,7 @@
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-expression</artifactId>
-      <version>4.3.28.RELEASE</version>
+      <version>${version.springframework}</version>
       <scope>compile</scope>
       <exclusions>
         <exclusion>
@@ -381,7 +416,7 @@
     <dependency>
       <groupId>org.apache.cxf</groupId>
       <artifactId>cxf-rt-transports-http</artifactId>
-      <version>3.0.1</version>
+      <version>${version.cxf}</version>
       <scope>compile</scope>
       <exclusions>
         <exclusion>
@@ -393,7 +428,7 @@
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-actuator</artifactId>
-      <version>1.3.8.RELEASE</version>
+      <version>${version.springframework.boot}</version>
       <exclusions>
         <exclusion>
           <artifactId>esapi</artifactId>
@@ -404,7 +439,7 @@
     <dependency>
       <groupId>org.springframework.integration</groupId>
       <artifactId>spring-integration-xml</artifactId>
-      <version>4.3.23.RELEASE</version>
+      <version>${version.springframework.integration}</version>
       <scope>compile</scope>
       <exclusions>
         <exclusion>
@@ -416,7 +451,7 @@
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-messaging</artifactId>
-      <version>4.3.28.RELEASE</version>
+      <version>${version.springframework}</version>
       <scope>compile</scope>
       <exclusions>
         <exclusion>
@@ -428,7 +463,7 @@
     <dependency>
       <groupId>commons-lang</groupId>
       <artifactId>commons-lang</artifactId>
-      <version>2.6</version>
+      <version>${version.commons-lang}</version>
       <scope>compile</scope>
       <exclusions>
         <exclusion>
@@ -440,7 +475,7 @@
     <dependency>
       <groupId>org.apache.tika</groupId>
       <artifactId>tika-core</artifactId>
-      <version>1.22</version>
+      <version>${version.tika}</version>
       <scope>compile</scope>
       <exclusions>
         <exclusion>
@@ -452,7 +487,7 @@
     <dependency>
       <groupId>org.quartz-scheduler</groupId>
       <artifactId>quartz</artifactId>
-      <version>2.3.2</version>
+      <version>${version.quartz}</version>
       <scope>compile</scope>
       <exclusions>
         <exclusion>
@@ -464,7 +499,7 @@
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-context-support</artifactId>
-      <version>4.3.28.RELEASE</version>
+      <version>${version.springframework}</version>
       <scope>compile</scope>
       <exclusions>
         <exclusion>
@@ -476,7 +511,7 @@
     <dependency>
       <groupId>org.springframework.security</groupId>
       <artifactId>spring-security-web</artifactId>
-      <version>4.2.18.RELEASE</version>
+      <version>${version.springframework.security}</version>
       <scope>compile</scope>
       <exclusions>
         <exclusion>
@@ -488,7 +523,7 @@
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-security</artifactId>
-      <version>1.3.8.RELEASE</version>
+      <version>${version.springframework.boot}</version>
       <exclusions>
         <exclusion>
           <artifactId>esapi</artifactId>
@@ -499,7 +534,7 @@
     <dependency>
       <groupId>org.apache.cxf</groupId>
       <artifactId>cxf-rt-ws-security</artifactId>
-      <version>3.0.1</version>
+      <version>${version.cxf}</version>
       <scope>compile</scope>
       <exclusions>
         <exclusion>
@@ -511,7 +546,7 @@
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-thymeleaf</artifactId>
-      <version>1.3.8.RELEASE</version>
+      <version>${version.springframework.boot}</version>
       <exclusions>
         <exclusion>
           <artifactId>esapi</artifactId>
@@ -525,7 +560,7 @@
       <dependency>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.3.8.RELEASE</version>
+        <version>${version.springframework.boot}</version>
         <scope>import</scope>
         <type>pom</type>
       </dependency>
