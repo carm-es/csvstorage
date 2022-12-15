@@ -22,7 +22,8 @@ import javax.jws.soap.SOAPBinding.Use;
 // import org.apache.chemistry.opencmis.client.api.Session;
 // import org.apache.chemistry.opencmis.commons.enums.BindingType;
 // import org.apache.chemistry.opencmis.commons.exceptions.CmisBaseException;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import es.gob.aapp.csvstorage.model.object.document.DocumentObject;
@@ -50,7 +51,7 @@ import es.gob.aapp.csvstorage.webservices.document.model.WSCredential;
 public class CSVDocumentBigDataServiceImpl implements CSVDocumentBigDataService {
 
   /** Logger de la clase. */
-  private static final Logger LOG = Logger.getLogger(CSVDocumentBigDataServiceImpl.class);
+  private static final Logger LOG = LogManager.getLogger(CSVDocumentBigDataServiceImpl.class);
 
 
   /** Inyección de los servicios business de almacenamiento de documentos. */

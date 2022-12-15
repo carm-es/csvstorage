@@ -20,7 +20,8 @@ import javax.xml.ws.soap.MTOM;
 import es.gob.aapp.csvstorage.services.business.document.GetDocumentBusinessService;
 import es.gob.aapp.csvstorage.webservices.document.model.*;
 import es.gob.aapp.csvstorage.webservices.documentmtom.model.DocumentoMtomStreamingResponse;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import es.gob.aapp.csvstorage.services.business.document.SaveDocumentBusinessService;
 import es.gob.aapp.csvstorage.webservices.document.BIGFILEStreamingService;
@@ -36,7 +37,7 @@ import es.gob.aapp.csvstorage.webservices.documentmtom.model.GuardarDocumentoMto
 public class BIGFILEStreamingServiceImpl implements BIGFILEStreamingService {
 
   /** Logger de la clase. */
-  private static final Logger LOG = Logger.getLogger(BIGFILEStreamingServiceImpl.class);
+  private static final Logger LOG = LogManager.getLogger(BIGFILEStreamingServiceImpl.class);
 
 
   /** Inyeccion de los servicios business de almacenamiento de documentos. */

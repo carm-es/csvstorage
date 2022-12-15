@@ -30,7 +30,8 @@ import javax.mail.util.ByteArrayDataSource;
 import javax.xml.stream.XMLStreamException;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.xml.security.utils.Base64;
 import es.gob.aapp.csvstorage.client.ws.eni.documentoe.TipoDocumento;
 import es.gob.aapp.csvstorage.client.ws.eni.documentoe.contenido.TipoContenido;
@@ -83,7 +84,7 @@ import es.gob.aapp.eeutil.bigDataTransfer.service.BigDataTransferService;
  */
 public abstract class DocumentConverter {
 
-  private static final Logger LOG = Logger.getLogger(DocumentConverter.class);
+  private static final Logger LOG = LogManager.getLogger(DocumentConverter.class);
 
   private static final Charset UTF8_CHARSET = Charset.forName("UTF-8");
   public static final String ERROR_AL_OBTENER_EL_CONENIDO_BINARIO =

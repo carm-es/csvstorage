@@ -31,7 +31,7 @@ public class Configuration {
   public static final String CONFIG_PATH_VAR = "csvstorage.config.path";
 
   /** Nombre del fichero para log4j. */
-  public static final String LOG4J_FILE_NAME = "log4j.properties";
+  public static final String LOG4J_FILE_NAME = "log4j2.xml";
   public static final String LOG4J_CONFIGURATION = "log4j.configuration";
 
   /**
@@ -55,6 +55,7 @@ public class Configuration {
         .println(CONFIG_PATH_VAR + "' ->" + getPropertyFromSystemOrEnvironment(CONFIG_PATH_VAR));// NOSONAR
     System.out.println(
         LOG4J_CONFIGURATION + "' ->" + getPropertyFromSystemOrEnvironment(LOG4J_CONFIGURATION));// NOSONAR
+
   }
 
   /**

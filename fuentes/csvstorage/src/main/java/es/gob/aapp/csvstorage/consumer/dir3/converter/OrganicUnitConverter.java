@@ -17,7 +17,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import org.apache.commons.collections.CollectionUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import es.gob.aapp.csvstorage.consumer.dir3.model.Unidad;
 import es.gob.aapp.csvstorage.consumer.dir3.model.Unidades;
 import es.gob.aapp.csvstorage.consumer.exception.ConsumerWSException;
@@ -34,7 +35,7 @@ import es.gob.aapp.csvstorage.util.constants.Constants;
 public class OrganicUnitConverter {
 
   /** Logger de la clase. */
-  private static final Logger LOG = Logger.getLogger(OrganicUnitConverter.class);
+  private static final Logger LOG = LogManager.getLogger(OrganicUnitConverter.class);
 
   /**
    * Convierte una lista de unidades recuperadas del ws a una lista de objetos.

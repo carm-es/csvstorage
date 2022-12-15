@@ -17,7 +17,8 @@ import javax.activation.DataHandler;
 import javax.activation.DataSource;
 import es.gob.aapp.csvstorage.webservices.documentmtom.model.*;
 import org.apache.commons.io.IOUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import es.gob.aapp.csvstorage.client.ws.eni.documentoe.TipoDocumento;
 import es.gob.aapp.csvstorage.client.ws.eni.documentoe.documentoe.mtom.TipoDocumentoMtom;
 import es.gob.aapp.csvstorage.consumer.exception.ConsumerWSException;
@@ -47,7 +48,7 @@ import es.gob.aapp.eeutil.bigDataTransfer.service.BigDataTransferService;
 public abstract class DocumentResponseConverter {
 
   /** Logger de la clase. */
-  private static final Logger LOG = Logger.getLogger(DocumentResponseConverter.class);
+  private static final Logger LOG = LogManager.getLogger(DocumentResponseConverter.class);
 
   public static Object convertObjectToDocumentoResponse(
       DocumentResponseObject documentResponseObject, DataHandler content, String mimeType,

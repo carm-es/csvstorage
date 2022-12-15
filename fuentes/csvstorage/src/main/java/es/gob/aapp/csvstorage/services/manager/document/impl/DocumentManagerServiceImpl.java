@@ -23,7 +23,8 @@ import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
 import javax.xml.bind.JAXBException;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
@@ -65,7 +66,7 @@ import es.gob.aapp.csvstorage.util.xml.JAXBMarshaller;
 public class DocumentManagerServiceImpl implements DocumentManagerService {
 
   /** Logger de la clase. */
-  private static final Logger LOG = Logger.getLogger(DocumentManagerServiceImpl.class);
+  private static final Logger LOG = LogManager.getLogger(DocumentManagerServiceImpl.class);
   public static final String ERROR_AL_BUSCAR_EL_DOCUMENTO = "Error al buscar el documento. ";
 
   @Autowired

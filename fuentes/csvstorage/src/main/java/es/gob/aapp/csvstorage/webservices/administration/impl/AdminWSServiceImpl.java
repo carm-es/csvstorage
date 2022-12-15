@@ -23,7 +23,8 @@ import javax.jws.soap.SOAPBinding.Use;
 import es.gob.aapp.csvstorage.dao.entity.unit.UnitEntity;
 import es.gob.aapp.csvstorage.services.manager.unit.UnitManagerService;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
@@ -52,7 +53,7 @@ import es.gob.aapp.csvstorage.webservices.administration.model.InfAdicional;
 public class AdminWSServiceImpl implements AdminWSService {
 
   /** Logger de la clase. */
-  private static final Logger LOG = Logger.getLogger(AdminWSServiceImpl.class);
+  private static final Logger LOG = LogManager.getLogger(AdminWSServiceImpl.class);
 
   private static final Locale locale = LocaleContextHolder.getLocale();
 

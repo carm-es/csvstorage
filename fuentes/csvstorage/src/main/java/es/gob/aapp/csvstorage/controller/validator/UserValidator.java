@@ -12,7 +12,8 @@
 package es.gob.aapp.csvstorage.controller.validator;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
@@ -26,7 +27,7 @@ import es.gob.aapp.csvstorage.model.object.users.UserObject;
 public class UserValidator implements Validator {
 
   /** Logger de la clase. */
-  private static final Logger LOG = Logger.getLogger(UserValidator.class);
+  private static final Logger LOG = LogManager.getLogger(UserValidator.class);
 
   /*
    * (non-Javadoc)

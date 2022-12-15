@@ -16,7 +16,8 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
 import org.apache.commons.codec.digest.DigestUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import es.gob.aapp.csvstorage.dao.entity.application.ApplicationEntity;
@@ -35,7 +36,7 @@ import es.gob.aapp.csvstorage.services.manager.application.ApplicationManagerSer
 public class ApplicationManagerServiceImpl implements ApplicationManagerService {
 
   /** Logger de la clase. */
-  private static final Logger LOG = Logger.getLogger(ApplicationManagerServiceImpl.class);
+  private static final Logger LOG = LogManager.getLogger(ApplicationManagerServiceImpl.class);
 
   @Autowired
   EntityManager entityManager;

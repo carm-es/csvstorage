@@ -19,7 +19,8 @@ import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
@@ -44,7 +45,7 @@ import es.gob.aapp.csvstorage.services.manager.document.DocumentEniManagerServic
 public class DocumentEniManagerServiceImpl implements DocumentEniManagerService {
 
   /** Logger de la clase. */
-  private static final Logger LOG = Logger.getLogger(DocumentEniManagerServiceImpl.class);
+  private static final Logger LOG = LogManager.getLogger(DocumentEniManagerServiceImpl.class);
 
   @Autowired
   EntityManager entityManager;

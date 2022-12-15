@@ -15,7 +15,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -34,7 +35,7 @@ import es.gob.aapp.csvstorage.services.manager.cmis.ObjectCmisManagerService;
 public class ObjectCmisManagerServiceImpl implements ObjectCmisManagerService {
 
   /** Logger de la clase. */
-  private static final Logger LOG = Logger.getLogger(ObjectCmisManagerServiceImpl.class);
+  private static final Logger LOG = LogManager.getLogger(ObjectCmisManagerServiceImpl.class);
 
   @Autowired
   EntityManager entityManager;

@@ -14,7 +14,6 @@ package es.gob.aapp.csvstorage.controller;
 import es.gob.aapp.csvstorage.services.business.truckstore.TruststoreBusinessService;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.security.access.annotation.Secured;
@@ -42,6 +41,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * Clase controladora de aplicaciones. Es la primera pestaña de la parte de Administración.
@@ -55,7 +56,7 @@ public class AdminInfoController {
   private static final String WAR = "csvstorage.war";
 
   /** Logger de la clase. */
-  private static final Logger LOG = Logger.getLogger(AdminInfoController.class);
+  private static final Logger LOG = LogManager.getLogger(AdminInfoController.class);
 
   @Autowired
   private TruststoreBusinessService certBusinessService;

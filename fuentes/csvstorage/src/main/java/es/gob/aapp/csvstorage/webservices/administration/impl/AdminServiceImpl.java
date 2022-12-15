@@ -24,7 +24,8 @@ import es.gob.aapp.csvstorage.dao.entity.unit.UnitEntity;
 import es.gob.aapp.csvstorage.services.manager.unit.UnitManagerService;
 import es.gob.aapp.csvstorage.util.constants.Constants;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
@@ -53,7 +54,7 @@ import es.gob.aapp.csvstorage.webservices.administration.model.WSCredential;
 public class AdminServiceImpl implements AdminService {
 
   /** Logger de la clase. */
-  private static final Logger LOG = Logger.getLogger(AdminServiceImpl.class);
+  private static final Logger LOG = LogManager.getLogger(AdminServiceImpl.class);
 
   private static final Locale locale = LocaleContextHolder.getLocale();
 

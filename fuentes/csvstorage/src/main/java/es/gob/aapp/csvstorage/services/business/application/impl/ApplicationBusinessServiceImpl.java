@@ -16,7 +16,8 @@ import java.util.List;
 import es.gob.aapp.csvstorage.dao.entity.unit.UnitEntity;
 import es.gob.aapp.csvstorage.services.manager.unit.UnitManagerService;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -41,7 +42,7 @@ import es.gob.aapp.csvstorage.services.manager.users.UserManagerService;
 public class ApplicationBusinessServiceImpl implements ApplicationBusinessService {
 
   /** Logger de la clase. */
-  private static final Logger LOG = Logger.getLogger(ApplicationBusinessServiceImpl.class);
+  private static final Logger LOG = LogManager.getLogger(ApplicationBusinessServiceImpl.class);
 
   /**
    * Inyección de los servicios de negocio de archivo.

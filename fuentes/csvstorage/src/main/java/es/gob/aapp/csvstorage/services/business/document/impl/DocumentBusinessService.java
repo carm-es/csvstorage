@@ -21,7 +21,8 @@ import java.util.Locale;
 import javax.activation.DataHandler;
 import javax.xml.bind.JAXBException;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.MessageSource;
@@ -65,7 +66,7 @@ import es.gob.aapp.csvstorage.util.file.FileUtil;
 public class DocumentBusinessService {
 
   /** Logger de la clase. */
-  private static final Logger LOG = Logger.getLogger(DocumentBusinessService.class);
+  private static final Logger LOG = LogManager.getLogger(DocumentBusinessService.class);
 
   @Value("${sistemaficheros.ruta}")
   protected String rutaFichero;

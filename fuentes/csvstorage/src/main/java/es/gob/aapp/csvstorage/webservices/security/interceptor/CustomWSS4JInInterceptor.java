@@ -14,7 +14,8 @@ package es.gob.aapp.csvstorage.webservices.security.interceptor;
 import java.util.Map;
 import java.util.Properties;
 import org.apache.cxf.ws.security.wss4j.WSS4JInInterceptor;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.wss4j.common.crypto.Crypto;
 import org.apache.wss4j.common.crypto.CryptoFactory;
 import org.apache.wss4j.common.ext.WSSecurityException;
@@ -22,7 +23,7 @@ import org.apache.wss4j.dom.handler.RequestData;
 
 public class CustomWSS4JInInterceptor extends WSS4JInInterceptor {
 
-  private static Logger logger = Logger.getLogger(CustomWSS4JInInterceptor.class);
+  private static Logger logger = LogManager.getLogger(CustomWSS4JInInterceptor.class);
 
   private Properties cryptoProperties;
 
