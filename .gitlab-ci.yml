@@ -17,6 +17,6 @@ variables:
 
 # Plantilla del pipeline que usar
 include:
-  - project: 'dockers/dev-ci'
+  - project: 'dockers/ci'
     file: '/maven/pipelines/github-maven-basico-sin-changelog.yml'
 
