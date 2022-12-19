@@ -26,7 +26,8 @@ import javax.xml.bind.JAXBException;
 import javax.xml.ws.BindingProvider;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
@@ -70,7 +71,7 @@ import reactor.util.IoUtils;
 public class Dir3ConsumerImpl implements Dir3Consumer {
 
   /** Logger de la clase. */
-  private static final Logger LOG = Logger.getLogger(Dir3ConsumerImpl.class);
+  private static final Logger LOG = LogManager.getLogger(Dir3ConsumerImpl.class);
   public static final String DIR3_WS_RUTA_DESCARGA_ZIP = "dir3.ws.ruta.descarga.zip";
   public static final String ERROR_AL_LLAMAR_AL_SERVICIO_RESPUESTA_NULA =
       "Error al llamar al servicio. Respuesta nula. ";

@@ -14,7 +14,8 @@ package es.gob.aapp.csvstorage.services.business.validation.impl;
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import es.gob.aapp.csvstorage.dao.entity.application.ApplicationEntity;
@@ -41,7 +42,7 @@ import es.gob.aapp.csvstorage.util.constants.IdentificationType;
 public class ValPermissionBusinessServiceImpl implements ValPermissionBusinessService {
 
   /** Logger de la clase. */
-  private static final Logger LOG = Logger.getLogger(ValPermissionBusinessServiceImpl.class);
+  private static final Logger LOG = LogManager.getLogger(ValPermissionBusinessServiceImpl.class);
 
   @Autowired
   private DocumentManagerService documentManagerService;

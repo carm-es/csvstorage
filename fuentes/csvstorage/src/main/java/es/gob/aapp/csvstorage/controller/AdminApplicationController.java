@@ -18,7 +18,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.context.MessageSource;
@@ -56,7 +57,7 @@ import es.gob.aapp.csvstorage.util.constants.ApplicationPermission;
 public class AdminApplicationController {
 
   /** Logger de la clase. */
-  private static final Logger LOG = Logger.getLogger(AdminApplicationController.class);
+  private static final Logger LOG = LogManager.getLogger(AdminApplicationController.class);
 
   /**
    * Inyección de los servicios de negocio de aplicaciones.

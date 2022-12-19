@@ -11,7 +11,8 @@
 
 package es.gob.aapp.csvstorage.job;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ import es.gob.aapp.csvstorage.services.business.unit.UnitBusinessService;
 
 public class OrganicUnitJob extends QuartzJobBean {
 
-  private static Logger logger = Logger.getLogger(OrganicUnitJob.class);
+  private static Logger logger = LogManager.getLogger(OrganicUnitJob.class);
 
   @Autowired
   private UnitBusinessService unitBusinessService;

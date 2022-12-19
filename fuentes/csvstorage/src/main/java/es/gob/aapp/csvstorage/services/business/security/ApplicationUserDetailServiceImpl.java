@@ -13,7 +13,8 @@ package es.gob.aapp.csvstorage.services.business.security;
 
 import java.util.ArrayList;
 import java.util.List;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -37,7 +38,7 @@ import es.gob.aapp.csvstorage.services.manager.application.ApplicationManagerSer
 public class ApplicationUserDetailServiceImpl implements UserDetailsService {
 
   /** Logger de la clase. */
-  private static final Logger LOG = Logger.getLogger(ApplicationUserDetailServiceImpl.class);
+  private static final Logger LOG = LogManager.getLogger(ApplicationUserDetailServiceImpl.class);
 
   /** Inyección de los servicios manager de aplicaciones. */
   @Autowired

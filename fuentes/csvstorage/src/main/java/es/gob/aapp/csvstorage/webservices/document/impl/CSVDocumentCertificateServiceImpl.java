@@ -17,7 +17,8 @@ import javax.jws.soap.SOAPBinding;
 import javax.jws.soap.SOAPBinding.ParameterStyle;
 import javax.jws.soap.SOAPBinding.Style;
 import javax.jws.soap.SOAPBinding.Use;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -66,7 +67,7 @@ import es.gob.aapp.csvstorage.webservices.document.model.reference.ObtenerRefere
 public class CSVDocumentCertificateServiceImpl implements CSVDocumentCertificateService {
 
   /** Logger de la clase. */
-  private static final Logger LOG = Logger.getLogger(CSVDocumentCertificateServiceImpl.class);
+  private static final Logger LOG = LogManager.getLogger(CSVDocumentCertificateServiceImpl.class);
 
 
   /** Inyección de los servicios business de almacenamiento de informes. */

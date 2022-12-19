@@ -14,7 +14,8 @@ package es.gob.aapp.csvstorage.services.business.security;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -37,7 +38,7 @@ import es.gob.aapp.csvstorage.util.constants.Errors;
  */
 @Service("userSecurityService")
 public class UserSecurityServiceImpl implements UserDetailsService {
-  private static Logger logger = Logger.getLogger(UserSecurityServiceImpl.class);
+  private static Logger logger = LogManager.getLogger(UserSecurityServiceImpl.class);
   @Autowired
   EntityManager entityManager;
 

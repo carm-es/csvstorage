@@ -15,7 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -35,7 +36,7 @@ import es.gob.aapp.csvstorage.services.manager.cmis.PropAdditCmisManagerService;
 public class PropAdditCmisManagerServiceImpl implements PropAdditCmisManagerService {
 
   /** Logger de la clase. */
-  private static final Logger LOG = Logger.getLogger(PropAdditCmisManagerServiceImpl.class);
+  private static final Logger LOG = LogManager.getLogger(PropAdditCmisManagerServiceImpl.class);
 
   @Autowired
   EntityManager entityManager;

@@ -7,6 +7,8 @@
   <packaging>pom</packaging>
 
   <name>CSV Storage</name>
+  <inceptionYear>2019</inceptionYear>
+
   <description>Instalación y desarrollo evolutivo en la CARM, de la versión distribuible de CSV Storage del CTT: https://administracionelectronica.gob.es/ctt/inside</description>
 
   <scm>
@@ -15,6 +17,13 @@
     <url>https://github.com/carm-es/csvstorage.git</url>    	
     <tag>HEAD</tag>
   </scm>
+
+  <licenses>
+    <license>
+      <name>EUPL</name>
+      <url>https://joinup.ec.europa.eu/sites/default/files/eupl1.1.-licence-es_0.pdf</url>
+    </license>
+  </licenses>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

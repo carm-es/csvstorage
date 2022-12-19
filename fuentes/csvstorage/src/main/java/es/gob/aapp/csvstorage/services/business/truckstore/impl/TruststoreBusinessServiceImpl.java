@@ -26,7 +26,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import javax.annotation.PostConstruct;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
@@ -46,7 +47,7 @@ import es.gob.aapp.csvstorage.webservices.document.model.CSVStorageException;
 @PropertySource("file:${csvstorage.config.path}/ws-security.properties")
 public class TruststoreBusinessServiceImpl implements TruststoreBusinessService {
 
-  private static final Logger LOG = Logger.getLogger(TruststoreBusinessServiceImpl.class);
+  private static final Logger LOG = LogManager.getLogger(TruststoreBusinessServiceImpl.class);
 
   @Value("${org.apache.wss4j.crypto.merlin.truststore.file}")
   private String trustStoreFile;

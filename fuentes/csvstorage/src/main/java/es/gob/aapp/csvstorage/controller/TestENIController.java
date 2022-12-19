@@ -15,7 +15,8 @@ import java.util.Locale;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.context.MessageSource;
@@ -45,7 +46,7 @@ import es.gob.aapp.csvstorage.webservices.document.model.ObtenerDocumentoEniResp
 public class TestENIController {
 
   /** Logger de la clase. */
-  private static final Logger LOG = Logger.getLogger(TestENIController.class);
+  private static final Logger LOG = LogManager.getLogger(TestENIController.class);
 
   /**
    * Inyección de los properties de mensajes.

@@ -11,7 +11,8 @@
 
 package es.gob.aapp.csvstorage.job;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,7 @@ import es.gob.aapp.csvstorage.util.file.FileUtil;
 
 public class FileSizeJob extends QuartzJobBean {
 
-  private static Logger logger = Logger.getLogger(FileSizeJob.class);
+  private static Logger logger = LogManager.getLogger(FileSizeJob.class);
 
   @Autowired
   private DocumentManagerService documentManagerService;

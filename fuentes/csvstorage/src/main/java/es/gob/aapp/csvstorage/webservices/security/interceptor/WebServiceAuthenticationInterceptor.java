@@ -17,7 +17,8 @@ import org.apache.cxf.interceptor.Fault;
 import org.apache.cxf.message.MessageContentsList;
 import org.apache.cxf.phase.AbstractPhaseInterceptor;
 import org.apache.cxf.phase.Phase;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -37,7 +38,7 @@ public class WebServiceAuthenticationInterceptor extends AbstractPhaseIntercepto
     implements InitializingBean {
 
   /** Logger de la clase. */
-  private static final Logger LOG = Logger.getLogger(WebServiceAuthenticationInterceptor.class);
+  private static final Logger LOG = LogManager.getLogger(WebServiceAuthenticationInterceptor.class);
 
   private AuthenticationManager authenticationManager;
 

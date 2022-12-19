@@ -14,7 +14,8 @@ package es.gob.aapp.csvstorage.services.manager.cmis.impl;
 import java.util.Iterator;
 import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import es.gob.aapp.csvstorage.dao.entity.cmis.TypeCmisEntity;
@@ -32,7 +33,7 @@ import es.gob.aapp.csvstorage.services.manager.cmis.TypeCmisManagerService;
 public class TypeCmisManagerServiceImpl implements TypeCmisManagerService {
 
   /** Logger de la clase. */
-  private static final Logger LOG = Logger.getLogger(ObjectCmisManagerServiceImpl.class);
+  private static final Logger LOG = LogManager.getLogger(ObjectCmisManagerServiceImpl.class);
 
   @Autowired
   EntityManager entityManager;

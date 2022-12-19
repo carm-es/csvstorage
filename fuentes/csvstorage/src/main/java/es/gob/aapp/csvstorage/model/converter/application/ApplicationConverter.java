@@ -14,7 +14,8 @@ package es.gob.aapp.csvstorage.model.converter.application;
 import java.util.ArrayList;
 import java.util.List;
 import es.gob.aapp.csvstorage.model.converter.unit.UnitConverter;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import es.gob.aapp.csvstorage.dao.entity.application.ApplicationEntity;
 import es.gob.aapp.csvstorage.model.converter.users.UsersConverter;
 import es.gob.aapp.csvstorage.model.object.application.ApplicationObject;
@@ -29,7 +30,7 @@ import es.gob.aapp.csvstorage.webservices.administration.model.Aplicacion;
 public abstract class ApplicationConverter {
 
   /** Logger de la clase. */
-  private static final Logger LOG = Logger.getLogger(ApplicationConverter.class);
+  private static final Logger LOG = LogManager.getLogger(ApplicationConverter.class);
 
   /**
    * Convertidor de entities a objetos del model.

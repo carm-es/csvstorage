@@ -21,7 +21,8 @@ import javax.jws.soap.SOAPBinding.Use;
 import javax.servlet.http.HttpServletRequest;
 import javax.xml.ws.WebServiceContext;
 import javax.xml.ws.handler.MessageContext;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -69,7 +70,7 @@ import es.gob.aapp.csvstorage.webservices.document.model.reference.ObtenerRefere
 public class CSVDocumentWSServiceImpl implements CSVDocumentWSService {
 
   /** Logger de la clase. */
-  private static final Logger LOG = Logger.getLogger(CSVDocumentWSServiceImpl.class);
+  private static final Logger LOG = LogManager.getLogger(CSVDocumentWSServiceImpl.class);
 
   @Resource
   private WebServiceContext wsCtxt;

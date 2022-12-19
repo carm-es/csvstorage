@@ -30,7 +30,8 @@ import javax.xml.stream.events.StartElement;
 import javax.xml.stream.events.XMLEvent;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.IOUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import es.gob.aapp.csvstorage.client.ws.eni.credential.CanonicalizationMethodType;
 import es.gob.aapp.csvstorage.client.ws.eni.credential.DigestMethodType;
 import es.gob.aapp.csvstorage.client.ws.eni.credential.KeyInfoType;
@@ -55,7 +56,7 @@ import es.gob.aapp.csvstorage.client.ws.eni.firma.TipoFirmasElectronicas.Conteni
 import es.gob.aapp.csvstorage.model.object.document.DocumentInfo;
 
 public class DocumentoENIUtils {
-  private static final Logger LOG = Logger.getLogger(DocumentoENIUtils.class);
+  private static final Logger LOG = LogManager.getLogger(DocumentoENIUtils.class);
 
   private static final String NODE_CONTENT = "content";
   private static final String ATTR_ID = "Id";

@@ -18,7 +18,8 @@ import javax.jws.soap.SOAPBinding.ParameterStyle;
 import javax.jws.soap.SOAPBinding.Style;
 import javax.jws.soap.SOAPBinding.Use;
 import javax.xml.ws.BindingType;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -71,7 +72,8 @@ import es.gob.aapp.csvstorage.webservices.documentmtom.model.ObtenerDocumentoMto
 public class CSVDocumentCertificateMtomServiceImpl implements CSVDocumentCertificateMtomService {
 
   /** Logger de la clase. */
-  private static final Logger LOG = Logger.getLogger(CSVDocumentCertificateMtomServiceImpl.class);
+  private static final Logger LOG =
+      LogManager.getLogger(CSVDocumentCertificateMtomServiceImpl.class);
 
   /** Inyección de los servicios business de eliminación de docuentos. */
   @Autowired
