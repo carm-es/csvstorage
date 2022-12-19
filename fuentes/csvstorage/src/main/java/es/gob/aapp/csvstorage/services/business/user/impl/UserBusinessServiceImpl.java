@@ -12,7 +12,8 @@
 package es.gob.aapp.csvstorage.services.business.user.impl;
 
 import java.util.List;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -32,7 +33,7 @@ import es.gob.aapp.csvstorage.services.manager.users.UserManagerService;
 public class UserBusinessServiceImpl implements UserBusinessService {
 
   /** Logger de la clase. */
-  private static final Logger LOG = Logger.getLogger(UserBusinessServiceImpl.class);
+  private static final Logger LOG = LogManager.getLogger(UserBusinessServiceImpl.class);
 
   /**
    * Inyecci�n de los servicios de negocio de usuario.

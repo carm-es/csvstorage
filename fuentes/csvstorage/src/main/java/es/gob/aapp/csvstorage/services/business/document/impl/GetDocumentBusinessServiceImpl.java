@@ -18,7 +18,8 @@ import java.util.List;
 import javax.activation.DataHandler;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -108,7 +109,7 @@ import es.gob.aapp.csvstorage.webservices.documentmtom.model.ObtenerDocumentoMto
 public class GetDocumentBusinessServiceImpl extends DocumentBusinessService
     implements GetDocumentBusinessService {
 
-  private static final Logger LOG = Logger.getLogger(GetDocumentBusinessServiceImpl.class);
+  private static final Logger LOG = LogManager.getLogger(GetDocumentBusinessServiceImpl.class);
   private static final String SEPARATOR = System.getProperty("file.separator");
   private static final String OBTENEMOS_EL_CONTENIDO = "Obtenemos el contenido. ";
   private static final String ERROR_EN_SERVICIO_DE_OBTENER_DOCUMENTO =

@@ -29,7 +29,8 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import es.gob.aapp.csvstorage.services.exception.ValidationException;
 
 
@@ -43,7 +44,7 @@ import es.gob.aapp.csvstorage.services.exception.ValidationException;
 public class FileUtil {
 
   /** Logger de la clase. */
-  private static final Logger LOG = Logger.getLogger(FileUtil.class);
+  private static final Logger LOG = LogManager.getLogger(FileUtil.class);
   private static final String SEPARATOR = System.getProperty("file.separator");
   private static final String FILE = "File: ";
   private static final String SE_HA_PRODUCIDO_UN_ERROR_AL_GENERAR_EL_HASH_DEL_DOCUMENTO =

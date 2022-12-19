@@ -13,7 +13,8 @@ package es.gob.aapp.csvstorage.model.converter.cmis;
 
 import java.util.ArrayList;
 import java.util.List;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import es.gob.aapp.csvstorage.dao.entity.cmis.PropAdditObjectCmisEntity;
 import es.gob.aapp.csvstorage.dao.entity.cmis.PropertiesTypeCmisEntity;
 import es.gob.aapp.csvstorage.dao.entity.cmis.TypeCmisEntity;
@@ -30,7 +31,7 @@ import es.gob.aapp.csvstorage.model.object.cmis.TypeCmisObject;
 public abstract class PropertiesCmisConverter {
 
   /** Logger de la clase. */
-  private static final Logger LOG = Logger.getLogger(PropertiesCmisConverter.class);
+  private static final Logger LOG = LogManager.getLogger(PropertiesCmisConverter.class);
 
   /**
    * Convertidor de entities a objetos del model.

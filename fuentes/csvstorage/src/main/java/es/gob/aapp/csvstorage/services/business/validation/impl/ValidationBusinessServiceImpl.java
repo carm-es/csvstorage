@@ -18,7 +18,8 @@ import javax.activation.DataHandler;
 import javax.mail.util.ByteArrayDataSource;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
@@ -62,7 +63,7 @@ import es.gob.aapp.csvstorage.webservices.document.model.Response;
 public class ValidationBusinessServiceImpl implements ValidationBusinessService {
 
   /** Logger de la clase. */
-  private static final Logger LOG = Logger.getLogger(ValidationBusinessServiceImpl.class);
+  private static final Logger LOG = LogManager.getLogger(ValidationBusinessServiceImpl.class);
   public static final String DOCUMENTO_NO_VALIDO = "Documento no válido. response=";
 
   @Autowired

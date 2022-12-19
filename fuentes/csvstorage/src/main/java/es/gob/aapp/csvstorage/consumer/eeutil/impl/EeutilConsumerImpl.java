@@ -15,7 +15,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import javax.xml.ws.BindingProvider;
 import javax.xml.ws.soap.MTOMFeature;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
@@ -48,7 +49,7 @@ import es.gob.aapp.csvstorage.consumer.exception.ConsumerWSException;
 public class EeutilConsumerImpl implements EeutilConsumer {
 
   /** Logger de la clase. */
-  private static final Logger LOG = Logger.getLogger(EeutilConsumerImpl.class);
+  private static final Logger LOG = LogManager.getLogger(EeutilConsumerImpl.class);
 
   /** Objeto para inyectar los servicios de descarga de unidades. */
   private EeUtilValidacionENIServiceMtom eeUtilValidacionENIService;

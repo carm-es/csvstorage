@@ -16,7 +16,8 @@ import javax.jws.soap.SOAPBinding;
 import javax.jws.soap.SOAPBinding.ParameterStyle;
 import javax.jws.soap.SOAPBinding.Style;
 import javax.jws.soap.SOAPBinding.Use;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import es.gob.aapp.csvbroker.webservices.querydocument.CSVQueryDocumentException;
@@ -50,7 +51,7 @@ import es.gob.aapp.csvstorage.webservices.document.model.ObtenerDocumentoRespons
 public class CSVQueryDocumentServiceImpl implements CSVQueryDocumentService {
 
   /** Logger de la clase. */
-  private static final Logger LOG = Logger.getLogger(CSVQueryDocumentServiceImpl.class);
+  private static final Logger LOG = LogManager.getLogger(CSVQueryDocumentServiceImpl.class);
 
   private static final String FILE_NAME = "documento";
 

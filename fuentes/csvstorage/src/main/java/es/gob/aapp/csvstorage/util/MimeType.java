@@ -12,13 +12,14 @@
 package es.gob.aapp.csvstorage.util;
 
 import java.util.HashMap;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.tika.Tika;
 
 public class MimeType {
 
   /** Logger de la clase. */
-  private static final Logger LOG = Logger.getLogger(MimeType.class);
+  private static final Logger LOG = LogManager.getLogger(MimeType.class);
   /**
    * Array de dos dimensiones con los tipos de contenidos del estandar MIME, la primera columna del
    * array es su extensi&oacute;n y la segunda es el Content-Type

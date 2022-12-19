@@ -23,7 +23,8 @@ import org.apache.cxf.jaxws.interceptors.HolderInInterceptor;
 import org.apache.cxf.message.Message;
 import org.apache.cxf.phase.AbstractPhaseInterceptor;
 import org.apache.cxf.phase.Phase;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.wss4j.common.principal.WSUsernameTokenPrincipalImpl;
 import org.apache.wss4j.dom.WSSecurityEngineResult;
 import org.apache.wss4j.dom.handler.WSHandlerConstants;
@@ -47,7 +48,7 @@ public class UserTokenAuthenticationInterceptor extends AbstractPhaseInterceptor
     implements InitializingBean {
 
   /** Logger de la clase. */
-  private static final Logger LOG = Logger.getLogger(UserTokenAuthenticationInterceptor.class);
+  private static final Logger LOG = LogManager.getLogger(UserTokenAuthenticationInterceptor.class);
 
   private AuthenticationManager authenticationManager;
 

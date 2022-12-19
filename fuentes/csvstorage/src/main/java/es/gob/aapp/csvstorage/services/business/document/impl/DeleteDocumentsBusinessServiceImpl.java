@@ -16,7 +16,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.PropertySource;
@@ -72,7 +73,7 @@ public class DeleteDocumentsBusinessServiceImpl implements DeleteDocumentBusines
   private static final Locale locale = LocaleContextHolder.getLocale();
 
   /** Logger de la clase. */
-  private static final Logger LOG = Logger.getLogger(DeleteDocumentsBusinessServiceImpl.class);
+  private static final Logger LOG = LogManager.getLogger(DeleteDocumentsBusinessServiceImpl.class);
 
   @Override
   public EliminarDocumentoResponse eliminar(EliminarDocumentoRequest eliminarDocumento)

@@ -17,7 +17,8 @@ import es.gob.aapp.csvstorage.model.object.unit.UnitObject;
 import es.gob.aapp.csvstorage.model.vo.SelectItemVO;
 import es.gob.aapp.csvstorage.services.business.unit.UnitBusinessService;
 import es.gob.aapp.csvstorage.services.business.unit.impl.UnitBusinessServiceImpl;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,7 +37,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class Dir3Controller {
 
   /** Logger de la clase. */
-  private static final Logger LOG = Logger.getLogger(Dir3Controller.class);
+  private static final Logger LOG = LogManager.getLogger(Dir3Controller.class);
 
   /**
    * Inyeccion de los servicios de negocio de unidades organicas.

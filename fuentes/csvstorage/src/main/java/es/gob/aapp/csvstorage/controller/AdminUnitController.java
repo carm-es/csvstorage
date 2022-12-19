@@ -16,7 +16,8 @@ import java.util.*;
 import javax.servlet.http.HttpServletRequest;
 import es.gob.aapp.csvstorage.model.vo.SelectItemVO;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -48,7 +49,7 @@ import es.gob.aapp.csvstorage.services.exception.ServiceException;
 public class AdminUnitController {
 
   /** Logger de la clase. */
-  private static final Logger LOG = Logger.getLogger(AdminUnitController.class);
+  private static final Logger LOG = LogManager.getLogger(AdminUnitController.class);
 
   private static final int DEFAULT_PAGE = 1;
   private static final int DEFAULT_SIZE = 25;

@@ -12,7 +12,8 @@
 package es.gob.aapp.csvstorage.controller;
 
 import java.util.Locale;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.context.MessageSource;
@@ -38,7 +39,7 @@ import es.gob.aapp.csvstorage.util.constants.Constants;
 public class AdminScanController {
 
   /** Logger de la clase. */
-  private static final Logger LOG = Logger.getLogger(AdminScanController.class);
+  private static final Logger LOG = LogManager.getLogger(AdminScanController.class);
 
   @Autowired
   private DocumentManagerService documentManagerService;

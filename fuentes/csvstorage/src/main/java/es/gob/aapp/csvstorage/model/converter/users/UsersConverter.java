@@ -13,7 +13,8 @@ package es.gob.aapp.csvstorage.model.converter.users;
 
 import java.util.ArrayList;
 import java.util.List;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import es.gob.aapp.csvstorage.dao.entity.users.UserEntity;
 import es.gob.aapp.csvstorage.model.object.users.UserObject;
 
@@ -27,7 +28,7 @@ import es.gob.aapp.csvstorage.model.object.users.UserObject;
 public abstract class UsersConverter {
 
   /** Logger de la clase. */
-  private static final Logger LOG = Logger.getLogger(UsersConverter.class);
+  private static final Logger LOG = LogManager.getLogger(UsersConverter.class);
 
   /** Formato de fecha del dir3. */
   public static final String FORMATO_FECHA = "dd/MM/yyyy";

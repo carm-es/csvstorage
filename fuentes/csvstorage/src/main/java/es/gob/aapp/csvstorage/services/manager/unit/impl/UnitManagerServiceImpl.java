@@ -18,7 +18,8 @@ import java.util.List;
 import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
@@ -43,7 +44,7 @@ import es.gob.aapp.csvstorage.services.manager.unit.UnitManagerService;
 public class UnitManagerServiceImpl implements UnitManagerService {
 
   /** Logger de la clase. */
-  private static final Logger LOG = Logger.getLogger(UnitEntity.class);
+  private static final Logger LOG = LogManager.getLogger(UnitEntity.class);
 
   @Autowired
   EntityManager entityManager;

@@ -11,7 +11,8 @@
 
 package es.gob.aapp.csvstorage.util.file;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.transaction.support.TransactionSynchronizationAdapter;
 import es.gob.aapp.csvstorage.services.exception.ServiceException;
 import es.gob.aapp.csvstorage.util.constants.Constants;
@@ -26,7 +27,7 @@ import es.gob.aapp.csvstorage.util.constants.Constants;
  */
 public class FileTransactionListener extends TransactionSynchronizationAdapter {
   /** Logger de la clase. */
-  private static final Logger LOG = Logger.getLogger(FileTransactionListener.class);
+  private static final Logger LOG = LogManager.getLogger(FileTransactionListener.class);
 
   public static final int ACTION_SAVE = 0;
   public static final int ACTION_UPDATE = 1;

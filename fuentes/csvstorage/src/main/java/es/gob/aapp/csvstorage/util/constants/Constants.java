@@ -249,7 +249,7 @@ public class Constants {
     public static final String FIELD_SEPARATOR = ",";
     public static final String ETIQUETA_ORGANISMO = "Organismo";
     public static final String FILE_SEPARATOR = System.getProperty("file.separator");
-    public static final String RUTA_CONFIG_LOG = "log4j.properties";
+    public static final String RUTA_CONFIG_LOG = "log4j2.xml";
 
 
     // etiquetas
@@ -321,7 +321,7 @@ public class Constants {
     public static String FIELD_SEPARATOR = ",";
     public static String ETIQUETA_ORGANISMO = "Organismo";
     public static String FILE_SEPARATOR = System.getProperty("file.separator");
-    public static String RUTA_CONFIG_LOG = "log4j.properties";
+    public static String RUTA_CONFIG_LOG = "log4j2.xml";
 
     public static String VALOR_SI = "S";
     public static String VALOR_NO = "N";

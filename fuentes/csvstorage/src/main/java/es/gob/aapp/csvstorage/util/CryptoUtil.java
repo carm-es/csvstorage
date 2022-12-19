@@ -19,7 +19,8 @@ import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.PBEParameterSpec;
 import javax.xml.bind.DatatypeConverter;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import es.gob.aapp.csvstorage.exception.EncryptException;
 
 
@@ -39,7 +40,7 @@ public class CryptoUtil {
   private static int iterationCount = 19;
 
   /** Logger de la clase. */
-  private static final Logger LOG = Logger.getLogger(CryptoUtil.class);
+  private static final Logger LOG = LogManager.getLogger(CryptoUtil.class);
 
   /**
    * 

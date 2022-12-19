@@ -23,7 +23,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.Parameter;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.repository.support.JpaEntityInformation;
@@ -49,7 +50,7 @@ public class BaseRepositoryImpl<T, ID extends Serializable> extends SimpleJpaRep
   EntityManager entityManager;
 
   /** Logger de la clase. */
-  private static final Logger LOG = Logger.getLogger(BaseRepositoryImpl.class);
+  private static final Logger LOG = LogManager.getLogger(BaseRepositoryImpl.class);
 
   private static final Map<String, String> specificationMap;
   static {

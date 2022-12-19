@@ -15,7 +15,8 @@ import java.util.Arrays;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletException;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.web.context.ContextLoaderListener;
@@ -31,7 +32,7 @@ import es.gob.aapp.csvstorage.configuration.Configuration;
 public class ExternalServerInitializer extends SpringBootServletInitializer {
 
   /** Logger de la clase. */
-  private static final Logger LOG = Logger.getLogger(ExternalServerInitializer.class);
+  private static final Logger LOG = LogManager.getLogger(ExternalServerInitializer.class);
 
   @Override
   protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {

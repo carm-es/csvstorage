@@ -14,7 +14,8 @@ package es.gob.aapp.csvstorage.controller;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.context.MessageSource;
@@ -44,7 +45,7 @@ import es.gob.aapp.csvstorage.util.constants.Constants;
 public class AdminTruststoreController {
 
   /** Logger de la clase. */
-  private static final Logger LOG = Logger.getLogger(AdminTruststoreController.class);
+  private static final Logger LOG = LogManager.getLogger(AdminTruststoreController.class);
 
   /**
    * Inyección de los servicios de negocio de usuarios.

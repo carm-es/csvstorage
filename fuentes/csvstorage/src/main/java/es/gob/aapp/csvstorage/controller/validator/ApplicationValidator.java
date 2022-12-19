@@ -16,7 +16,8 @@ import es.gob.aapp.csvstorage.model.object.unit.UnitObject;
 import es.gob.aapp.csvstorage.services.exception.ServiceException;
 import es.gob.aapp.csvstorage.services.manager.unit.UnitManagerService;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
@@ -32,7 +33,7 @@ import java.util.List;
 public class ApplicationValidator implements Validator {
 
   /** Logger de la clase. */
-  private static final Logger LOG = Logger.getLogger(ApplicationObject.class);
+  private static final Logger LOG = LogManager.getLogger(ApplicationObject.class);
   public static final String UNIDAD_CODIGO = "unidad.unidadOrganica";
 
   @Autowired
