@@ -33,7 +33,7 @@
      <version.tika>1.22</version.tika>
      <version.quartz>2.3.2</version.quartz>
 
-     <version.codehaus.groovy>2.4.17</version.codehaus.groovy>
+     <version.codehaus.groovy>2.4.21</version.codehaus.groovy>
      <version.codehaus.woodstox.core>4.4.0</version.codehaus.woodstox.core>
      <version.codehaus.woodstox.stax>3.1.4</version.codehaus.woodstox.stax>
 
