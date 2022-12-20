@@ -16,7 +16,7 @@
   <properties>
      <version.springframework>4.3.28.RELEASE</version.springframework>
      <version.springframework.security>4.2.18.RELEASE</version.springframework.security>
-     <version.springframework.boot>1.3.8.RELEASE</version.springframework.boot>
+     <version.springframework.boot>2.5.12</version.springframework.boot>
      <version.springframework.integration>4.3.23.RELEASE</version.springframework.integration>
      <version.cxf>3.0.1</version.cxf>
 
